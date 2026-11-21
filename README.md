@@ -36,14 +36,27 @@ Die Volumentabelle gilt im Menüpunkt „Offene Angaben und Berechnungsgrundlage
 - Einzel- und Gesamtstückliste mit Menge, Einheit, Rechenweg, Status (festgelegt / vorläufige Annahme / fehlt). Identische Positionen im Projekt zusammengefasst.
 - Gasvolumen und Dachhöhe aus der Herstellertabelle; geometrische Kugelkappe/Kegel nur als *geometrischer Richtwert, nicht Herstellerwert*. Freibord geometrisch getrennt, nicht mit dem Tabellen-Nutzvolumen verrechnet.
 - Gebläse, Drucksicherungen, Füllstandsmessung, Flansche, Schläuche, Fittings, Gurte/Netz, Membranflächen: Positionen mit Status „Auswahlregel fehlt“ bzw. Menge offen.
-- Montage: 2 Monteure, Membranhub ca. 4 h, Mittelstützenhub ca. 2 h, Hotel 100 EUR/Monteur/Nacht, Gerüst bauseits, Transport/Entladung – vorläufig, keine Preise außer der Hotelpauschale.
+- Montage: Gerüst bauseits, Transport/Entladung – vorläufig. Planwerte (2 Monteure, Membranhub ca. 4 h, Mittelstützenhub ca. 2 h) erscheinen nur als Platzhalter in den Eingabefeldern und werden nicht automatisch als Menge übernommen; leere Felder bleiben „Menge offen“ und werden nicht bepreist, eine bewusst eingetragene 0 bleibt 0. Übernachtungen (Monteur-Nächte) im Angebot; Satz nur über die Preisliste, leer = offen.
 - Menüpunkt „Offene Angaben und Berechnungsgrundlagen“ je Behälter und Projekt; Bauteilvollständigkeit getrennt von Mengenregel-Vollständigkeit.
-- Bemaßte dynamische 2-D-Schnittskizze (SVG) und 3-D-Ansicht (Behälterauswahl, Schnitt/Voll, Mittelstütze, Doppelmembran).
+- Bemaßte dynamische 2-D-Schnittskizze (SVG) und 3-D-Ansicht (Behälterauswahl, Schnitt/Voll, Mittelstütze mit festem Kronenring ca. 1,5 m Durchmesser, radiale Gurte nach ~90-cm-Teilung und Tragnetz mit eigenen Schaltern; Standardorbit flach und nah in die Schnittöffnung).
 - Speichern/Laden (JSON-Datei und localStorage), CSV-Export (UTF-8-BOM, Semikolon), Druckansicht, automatische Neuberechnung. Responsive, offline.
+
+## Angebotserstellung
+
+- **Projektdaten & Konditionen:** Projektname, Kunde, Standort, Angebotsnummer, Datum, Gültigkeit, Bearbeiter, Rabatt (%), Nebenkosten/Frachtpauschale (€), MwSt.-Satz (Standard 19 %, abschaltbar für Netto-Angebot) sowie ein Freitextfeld für Angebotsbedingungen.
+- **Automatische Positionsermittlung je Behälter:** Alle Positionen aus Stückliste und Montageansätzen werden automatisch übernommen und in sechs Gewerke gegliedert: **Membranen**, **Profile und Schienen**, **Kleinteile**, **Gebläse und Sicherheitstechnik**, **Montage**, **Übernachtung und Kran**.
+- **Keine Standardpreise im Code:** Alle Einzelpreise starten leer. **Preise bleiben lokal in diesem Browser bzw. in Ihrer Preisdatei** (`localStorage` und separate Preislisten-JSON, unabhängig vom Projekt-JSON).
+- **Zentrale Preisliste & Überschreibung:** Artikelpreise lassen sich zentral pflegen (sodass identische Artikel in allen Behältern denselben Preis erhalten) und bei Bedarf je Behälterposition über „Indiv.“ gezielt überschreiben.
+- **Offene Positionen:** Positionen mit Status `fehlt` / `Auswahlregel fehlt` (z. B. Stoßplatten, Dichtmasse, Montagetage) werden als `Menge offen` bzw. `nach Aufwand / offen` ausgewiesen – niemals als `0 €`. Gleiches gilt für Positionen ohne gepflegten Preis (`auf Anfrage` / `nach Aufwand / offen`). Zwischen- und Projektsummen tragen in diesem Fall den Hinweis *Summe ohne offene Positionen*.
+- **Drei Anzeigemodi:**
+  1. *Einzelpreise je Position* (mit editierbarem Einzel- und Gesamtpreis),
+  2. *Gesamtpreis je Behälter* (Positionen mit Mengen, aber ohne Einzelpreise; Zwischensumme je Behälter),
+  3. *Nur Projektsumme* (kompakte Behälterübersicht mit Zwischensummen und Projektsummenblock).
+- **Ausgabe:** Druckfertige A4-Angebotsansicht („Angebot drucken / PDF“, funktioniert in allen drei Anzeigemodi mit Hinweis *schematische Mengenermittlung, Montagewerte vorläufig*), Angebots-CSV-Export (UTF-8 mit BOM, Semikolon, Dezimalkomma) sowie vollständige JSON-Sicherung inkl. Abwärtskompatibilität für ältere Einzel- und v1-Projekte.
 
 ## Übernahme aus der erweiterten HTML-Version
 
-Übernommen, soweit sie der Spezifikation nicht widersprechen: die sechs Hersteller-Dachformen und die Tabellenstruktur, Geometrieregeln, Montagekennzahlen (Monteure, Kranstunden, Hotelpauschale), Katalog der benannten Bauteile, Projekt speichern/laden, CSV, Prüfung offener Angaben, Beispielbehälter 20 × 6 m und 32 × 8 m (Wandstärke 30 cm illustrativ).
+Übernommen, soweit sie der Spezifikation nicht widersprechen: die sechs Hersteller-Dachformen und die Tabellenstruktur, Geometrieregeln, Montagekennzahlen (Monteure, Kranstunden), Katalog der benannten Bauteile, Projekt speichern/laden, CSV, Prüfung offener Angaben, Beispielbehälter 20 × 6 m und 32 × 8 m (Wandstärke 30 cm illustrativ). Eine Hotelpauschale ist nicht fest hinterlegt, sondern wird nur über die Preisliste gepflegt.
 
 ## Widersprüche (Spezifikation gilt)
 
@@ -82,4 +95,4 @@ Die detaillierte Tätigkeitsplanung (einzelne Montagetermine mit Statusmaschine)
 
 ## Hinweis
 
-Technische Ersteinschätzung, keine verbindliche Planungs-, Hersteller-, Preis- oder Montageauskunft. Nicht veröffentlicht, kein GitHub-Push.
+Technische Ersteinschätzung, keine verbindliche Planungs-, Hersteller-, Preis- oder Montageauskunft. Die Seite ist unter https://volkibautbots.github.io/gasspeicher-konfigurator/ veröffentlicht; diese Erweiterung (Angebotserstellung und 3-D-Gurte/Netz) ist lokal fertig, aber noch nicht auf GitHub übernommen.

@@ -30,7 +30,10 @@
 .sketch-wrap svg{display:block;width:100%;height:auto;max-height:560px}
 .bom-path{font-size:12px;color:var(--muted);white-space:normal;max-width:420px}
 table td.wrap,table th.wrap{white-space:normal}
-.viewer-select{position:absolute;right:20px;top:104px;z-index:3}
+.viewer-select{position:static;margin-top:2px}
+.toolbar{z-index:3}
+.toolbar button.active{background:#238586cc;border-color:#5ad7c4;color:#fff;font-weight:600}
+.toolbar button:disabled{opacity:.55;cursor:not-allowed}
 .viewer-select select{background:#183044cc;border:1px solid #58728666;color:#ecfbff;border-radius:8px;padding:7px 10px;font:inherit;font-size:12px}
 .section-anchor{scroll-margin-top:12px}
 .vol-table td.num, .vol-table th.num{text-align:right}
@@ -42,8 +45,78 @@ details.block summary{cursor:pointer;font-weight:600}
 #openList ul{margin:6px 0 14px;padding-left:18px}
 #openList li{margin:3px 0}
 .split-status{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:740px){.split-status{grid-template-columns:1fr}.viewer-select{position:static;margin:8px 12px}.actions button{flex:1}}
+@media(max-width:740px){.split-status{grid-template-columns:1fr}.viewer-select{position:static;margin-top:2px}.actions button{flex:1}}
 @media print{.nav-links,.actions,.file-hidden,.toolbar,.viewer-select,.viewer-help{display:none!important}#scene-section .viewer{break-inside:avoid}.sketch-wrap{break-inside:avoid}}
+
+/* Angebotserstellung */
+.offer-controls{margin:14px 0 18px}
+.offer-toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:8px}
+.mode-switch{display:inline-flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#f5f7f9}
+.mode-btn{border:0;border-right:1px solid var(--line);border-radius:0;background:transparent;padding:8px 12px;font-size:13px;font-weight:500;color:var(--ink)}
+.mode-btn:last-child{border-right:0}
+.mode-btn.active{background:var(--blue);color:#fff;font-weight:600}
+.offer-actions{display:flex;flex-wrap:wrap;gap:8px}
+.offer-meta-inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin-top:12px}
+.offer-textarea{width:100%;font:inherit;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:9px 10px;resize:vertical;background:#fff}
+.offer-textarea:focus{outline:none;background:#e8f6f4;border-color:var(--blue)}
+.offer-doc{border:1px solid var(--line);border-radius:12px;background:#fff;padding:20px}
+.offer-doc-header{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;padding-bottom:14px;border-bottom:2px solid var(--bg);margin-bottom:14px}
+.offer-doc-brand{background:var(--bg);color:#fff;padding:14px 18px;border-radius:10px;flex:1 1 320px}
+.offer-doc-brand .eyebrow{color:var(--blue-light);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.offer-doc-brand h3{margin:4px 0 2px;font-size:18px;color:#fff}
+.offer-doc-brand .sub{font-size:12px;color:#b5c9d5}
+.offer-doc-meta{display:grid;grid-template-columns:auto 1fr;column-gap:14px;row-gap:4px;font-size:13px;align-content:start;flex:1 1 280px;background:#f5f7f9;padding:12px 14px;border-radius:10px;border:1px solid var(--line)}
+.offer-doc-meta b{color:var(--muted);font-weight:600;font-size:12px}
+.offer-tank-block{margin:18px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.offer-tank-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px;background:#f0f5f7;border-bottom:1px solid var(--line)}
+.offer-tank-head h3{margin:0;font-size:15px}
+.offer-tank-sub{font-size:12px;color:var(--muted)}
+.offer-tank-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;background:#f8fbfc;border-top:1px solid var(--line);font-size:13px}
+.offer-tank-foot strong{font-variant-numeric:tabular-nums}
+.trade-row td{background:#f3f7f9;color:var(--ink);font-weight:650;font-size:12px;letter-spacing:.03em;text-transform:uppercase;padding:8px 13px}
+.price-cell-wrap{display:inline-flex;align-items:center;gap:5px;justify-content:flex-end}
+.price-input{width:105px;text-align:right;font:inherit;font-variant-numeric:tabular-nums;border:1px solid var(--line);border-radius:6px;padding:5px 7px;background:#fff;color:var(--ink)}
+.price-input:focus{outline:none;border-color:var(--blue);background:#e8f6f4}
+.price-input.is-override{border-color:var(--orange);background:#fff9eb}
+.ov-btn{padding:4px 7px;font-size:11px;border-radius:6px;border:1px solid var(--line);background:#fff;color:var(--muted)}
+.ov-btn.active{background:#fff3d6;border-color:var(--orange);color:#8a5a00;font-weight:600}
+.offer-totals{margin-top:18px;margin-left:auto;max-width:460px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#f8fbfc}
+.offer-totals table{width:100%}
+.offer-totals td{padding:8px 14px;font-size:13px}
+.offer-totals tr.total-main td{background:var(--bg);color:#fff;font-weight:650;font-size:15px}
+.offer-totals tr.total-net td{background:#e9f4f3;font-weight:650}
+.offer-terms-box{margin-top:14px;padding:12px 14px;background:#f5f7f9;border:1px solid var(--line);border-radius:8px;font-size:12px}
+.offer-terms-box p{margin:4px 0 0;white-space:pre-wrap}
+.offer-disclaimer{margin-top:14px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.muted-cell{color:var(--muted)}
+.print-only{display:none}
+@media(max-width:900px){.offer-meta-inputs{grid-template-columns:1fr 1fr}}
+@media(max-width:740px){.offer-meta-inputs{grid-template-columns:1fr}.offer-totals{max-width:none}}
+@page{size:A4;margin:12mm 14mm}
+@media print{
+  .no-print,.screen-only,.edit-tank-btn{display:none!important}
+  .print-only{display:inline!important}
+  .offer-doc{border:0;padding:0}
+  .offer-doc-brand{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .offer-totals tr.total-main td{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .offer-tank-block{break-inside:auto;border-color:#ccc}
+  .offer-tank-head,.offer-tank-foot,.offer-totals,.offer-doc-header,.offer-terms-box{break-inside:avoid}
+  body.print-offer-only header,
+  body.print-offer-only .nav-links,
+  body.print-offer-only .layout,
+  body.print-offer-only .viewer-caption,
+  body.print-offer-only #summaryCards,
+  body.print-offer-only #geometrie,
+  body.print-offer-only #skizze,
+  body.print-offer-only #stueckliste,
+  body.print-offer-only #montage,
+  body.print-offer-only #volumentabelle,
+  body.print-offer-only #offen,
+  body.print-offer-only footer,
+  body.print-offer-only #angebot .section-head{display:none!important}
+  body.print-offer-only #angebot{margin:0;padding:0;border:0;box-shadow:none}
+}
+
 </style>
 </head>
 <body>
@@ -62,6 +135,7 @@ details.block summary{cursor:pointer;font-weight:600}
     <a href="#skizze">Schnittskizze</a>
     <a href="#stueckliste">Stücklisten</a>
     <a href="#montage">Montage</a>
+    <a href="#angebot">Angebot</a>
     <a href="#volumentabelle">Volumentabelle</a>
     <a href="#offen">Offene Angaben und Berechnungsgrundlagen</a>
   </nav>
@@ -115,14 +189,14 @@ details.block summary{cursor:pointer;font-weight:600}
         <div class="field"><label for="innerHeight">Innenmembran-Stichhöhe (optional)</label><div class="input"><input id="innerHeight" type="number" min="0" max="40" step="0.01" inputmode="decimal" placeholder="sonst nur Darstellung"><span>m</span></div></div>
       </div>
       <h3>Montageparameter</h3>
-      <p class="hint">Alles außer der Hotelpauschale von 100 EUR/Monteur/Nacht ist vorläufig. Montagetage nicht automatisch aus dem Durchmesser ableiten.</p>
+      <p class="hint">Montageansätze sind vorläufig. Übernachtungen im Angebot als Monteur-Nächte; der Satz kommt nur aus der Preisliste (leer = offen). Montagetage nicht automatisch aus dem Durchmesser ableiten.</p>
       <div class="fields">
-        <div class="field"><label for="crew">Monteure</label><div class="input"><input id="crew" type="number" min="1" max="20" step="1" value="2"><span>Pers.</span></div></div>
+        <div class="field"><label for="crew">Monteure</label><div class="input"><input id="crew" type="number" min="0" max="20" step="1" placeholder="Planwert 2"><span>Pers.</span></div></div>
         <div class="field"><label for="installDays">Montagetage (Planwert)</label><div class="input"><input id="installDays" type="number" min="0" max="30" step="0.5" inputmode="decimal" placeholder="offen"><span>Tage</span></div></div>
-        <div class="field"><label for="craneHours">Membranhub</label><div class="input"><input id="craneHours" type="number" min="0" max="24" step="0.5" value="4"><span>h</span></div></div>
-        <div class="field"><label for="supportCraneHours">Mittelstützenhub</label><div class="input"><input id="supportCraneHours" type="number" min="0" max="24" step="0.5" value="2"><span>h</span></div></div>
+        <div class="field"><label for="craneHours">Membranhub</label><div class="input"><input id="craneHours" type="number" min="0" max="24" step="0.5" placeholder="Planwert 4"><span>h</span></div></div>
+        <div class="field"><label for="supportCraneHours">Mittelstützenhub</label><div class="input"><input id="supportCraneHours" type="number" min="0" max="24" step="0.5" placeholder="Planwert 2"><span>h</span></div></div>
         <div class="field"><label for="hotelNights">Übernachtungen je Monteur</label><div class="input"><input id="hotelNights" type="number" min="0" max="30" step="1" placeholder="offen"><span>Nächte</span></div></div>
-        <div class="field"><label for="hotelPeople">Übernachtende Personen</label><div class="input"><input id="hotelPeople" type="number" min="0" max="20" step="1" value="2"><span>Pers.</span></div></div>
+        <div class="field"><label for="hotelPeople">Übernachtende Personen</label><div class="input"><input id="hotelPeople" type="number" min="0" max="20" step="1" placeholder="Planwert 2"><span>Pers.</span></div></div>
       </div>
       <div class="field"><label for="craneClass">Krangröße / Hebeplan (falls bekannt)</label><div class="input"><input id="craneClass" type="text" placeholder="noch festzulegen"></div></div>
       <div class="field"><label for="delivery">Anlieferung / Entladung</label><div class="input"><input id="delivery" type="text" placeholder="Detailkalkulation später"></div></div>
@@ -134,17 +208,19 @@ details.block summary{cursor:pointer;font-weight:600}
           <div class="tank-info" id="tankInfo" aria-live="polite"></div>
           <div class="toolbar">
             <button type="button" id="cutaway">Vollansicht</button>
+            <button type="button" id="toggleStraps" class="active">Gurte: An</button>
+            <button type="button" id="toggleNet" class="active">Netz: An</button>
             <button type="button" id="resetView">Ansicht zurücksetzen</button>
-          </div>
-          <div class="viewer-select" id="viewerSelectWrap" hidden>
-            <label class="visually-hidden" for="viewTank" style="position:absolute;left:-99em">Behälter in der 3-D-Ansicht</label>
-            <select id="viewTank" aria-label="Behälter in der 3-D-Ansicht"></select>
+            <div class="viewer-select" id="viewerSelectWrap" hidden>
+              <label class="visually-hidden" for="viewTank" style="position:absolute;left:-99em">Behälter in der 3-D-Ansicht</label>
+              <select id="viewTank" aria-label="Behälter in der 3-D-Ansicht"></select>
+            </div>
           </div>
           <canvas id="scene" tabindex="0" aria-label="Drehbare 3-D-Darstellung des Behälters mit Doppelmembrandach"></canvas>
           <div class="viewer-help">Ziehen zum Drehen · Scrollen zum Zoomen · Keine Maßbeschriftung in der 3-D-Ansicht</div>
         </div>
       </section>
-      <div class="viewer-caption">Dunkler Hintergrund, Behälter in Grau (Beton matt, Stahl metallischer), Außenmembran hellblau durchscheinend, Innenmembran türkis. Mittelstütze nur, wenn sie zum Lieferumfang gehört. Werte stehen in der Infobox oben links.</div>
+      <div class="viewer-caption">Dunkler Hintergrund, Behälter in Grau (Beton matt, Stahl metallischer), Außenmembran hellblau durchscheinend, Innenmembran türkis. Mittelstütze, Kronenring, radiale Gurte (~90 cm Teilung) und Tragnetz nur, wenn die Mittelstütze zum Lieferumfang gehört. Werte stehen in der Infobox oben links.</div>
       <div class="cards" id="summaryCards"></div>
     </div>
   </div>
@@ -172,9 +248,68 @@ details.block summary{cursor:pointer;font-weight:600}
 
   <section class="panel section section-anchor" id="montage">
     <h2>Montage, Kran, Logistik, Hotel</h2>
-    <p class="intro">Planansätze, ausdrücklich vorläufig. Keine Verkaufspreise außer der festgelegten Hotelpauschale von 100 EUR je Monteur und Nacht. Umlaufendes Gerüst bauseits.</p>
+    <p class="intro">Planansätze, ausdrücklich vorläufig. Keine fest hinterlegten Verkaufspreise; Übernachtungen erscheinen im Angebot als Monteur-Nächte und werden nur über die Preisliste bepreist (leer = offen). Umlaufendes Gerüst bauseits.</p>
     <div class="table-scroll" id="montageTable"></div>
     <div class="note" id="montageNote"></div>
+  </section>
+
+
+  <section class="panel section section-anchor" id="angebot">
+    <div class="section-head">
+      <div>
+        <h2>Angebotserstellung</h2>
+        <p class="intro" style="margin-bottom:0">Automatisch aus den berechneten Stücklisten und Montageansätzen erzeugt, gruppiert nach Gewerken. <strong>Preise bleiben lokal in diesem Browser bzw. in Ihrer Preisdatei</strong> (keine Standardpreise hinterlegt).</p>
+      </div>
+    </div>
+
+    <div class="offer-controls no-print">
+      <div class="offer-toolbar">
+        <div class="mode-switch" role="group" aria-label="Anzeigemodus Angebot">
+          <button type="button" class="mode-btn active" data-offer-mode="einzelpreise">Einzelpreise je Position</button>
+          <button type="button" class="mode-btn" data-offer-mode="behaeltersumme">Gesamtpreis je Behälter</button>
+          <button type="button" class="mode-btn" data-offer-mode="projektsumme">Nur Projektsumme</button>
+        </div>
+        <div class="offer-actions">
+          <button type="button" class="primary" id="btnOfferPrint">Angebot drucken / PDF</button>
+          <button type="button" id="btnOfferCsv">Angebot als CSV</button>
+          <button type="button" id="btnPriceSave">Preisliste speichern (JSON)</button>
+          <button type="button" id="btnPriceLoad">Preisliste laden (JSON)</button>
+          <button type="button" class="danger" id="btnPriceClear" style="border-color:#e3c0c0">Preise leeren</button>
+        </div>
+        <input class="file-hidden" id="priceFileLoad" type="file" accept="application/json,.json">
+      </div>
+      <p class="hint" id="offerStatus">Preisliste lokal aktiv (0 Preise gepflegt).</p>
+
+      <details class="block" id="offerMetaPanel" open>
+        <summary>Projektdaten, Konditionen &amp; Hinweistext für das Angebot</summary>
+        <div class="offer-meta-inputs">
+          <div class="field"><label for="offerCustomer">Kunde / Auftraggeber</label><div class="input"><input id="offerCustomer" type="text" placeholder="Firma / Name, Anschrift" autocomplete="off"></div></div>
+          <div class="field"><label for="offerLocation">Standort / Bauvorhaben</label><div class="input"><input id="offerLocation" type="text" placeholder="Ort / Flurstück / Anlage" autocomplete="off"></div></div>
+          <div class="field"><label for="offerNumber">Angebotsnummer</label><div class="input"><input id="offerNumber" type="text" placeholder="z. B. ANG-2026-001" autocomplete="off"></div></div>
+          <div class="field"><label for="offerDate">Angebotsdatum</label><div class="input"><input id="offerDate" type="text" placeholder="TT.MM.JJJJ" autocomplete="off"></div></div>
+          <div class="field"><label for="offerValidity">Gültigkeit</label><div class="input"><input id="offerValidity" type="text" placeholder="z. B. 30 Tage / bis …" autocomplete="off"></div></div>
+          <div class="field"><label for="offerAuthor">Bearbeiter</label><div class="input"><input id="offerAuthor" type="text" placeholder="Name / Kürzel" autocomplete="off"></div></div>
+          <div class="field"><label for="offerDiscount">Rabatt auf Behältersumme</label><div class="input"><input id="offerDiscount" type="number" min="0" max="100" step="0.1" inputmode="decimal" placeholder="0"><span>%</span></div></div>
+          <div class="field"><label for="offerExtra">Nebenkosten / Frachtpauschale (Projekt)</label><div class="input"><input id="offerExtra" type="number" min="0" step="0.01" inputmode="decimal" placeholder="leer = offen"><span>€</span></div></div>
+          <div class="field"><label for="offerVatRate">MwSt.-Satz</label><div class="input"><input id="offerVatRate" type="number" min="0" max="100" step="0.1" inputmode="decimal" value="19"><span>%</span></div></div>
+          <div class="field" style="justify-content:flex-end">
+            <label class="check" style="margin:6px 0"><input id="offerVatEnabled" type="checkbox" checked><span>MwSt. ausweisen (aus = Netto-Angebot)</span></label>
+          </div>
+        </div>
+        <div class="field" style="margin-top:10px">
+          <label for="offerTerms">Bedingungen / Freitext (erscheint im Angebot &amp; Ausdruck)</label>
+          <textarea id="offerTerms" class="offer-textarea" rows="3" placeholder="Zahlungsbedingungen, Lieferzeit, bauseitige Leistungen, Gültigkeit …"></textarea>
+        </div>
+      </details>
+
+      <details class="block" id="priceListPanel">
+        <summary>Zentrale Preisliste (Artikel → €/Einheit, gilt für alle Behälter) · <span id="priceCountBadge">0 gepflegt</span></summary>
+        <p class="hint" style="margin-bottom:10px">Änderungen hier gelten automatisch für alle Behälter mit demselben Artikel. In der Positionstabelle kann jeder Behälter über „Indiv.“ gezielt überschrieben werden.</p>
+        <div class="table-scroll" id="priceListWrap"></div>
+      </details>
+    </div>
+
+    <div id="offerDocument" class="offer-doc"></div>
   </section>
 
   <section class="panel section section-anchor" id="volumentabelle">
@@ -222,7 +357,6 @@ const EYELET_SPACING = 1.00;     // m, Außenmembran-Ösen, vorläufig
 const BELT_HOLE_SPACING = 0.90;  // m, Gurtwandhalter-Bohrungen, vorläufig
 const STRIP_WIDTH = 0.57;        // m, Mauerkronenstreifen, festgelegt
 const RESERVE = 0.05;            // nur Kleinteile
-const HOTEL_RATE = 100;          // EUR je Monteur und Nacht, festgelegt (Pauschale)
 
 const ROOF_FORMS = [
   {id:'kegel30', name:'Kegelform 30°', short:'Kegel 30°', kind:'kegel', fraction:null, angleDeg:30},
@@ -623,41 +757,61 @@ function formulaNum(n, d){
   return n.toLocaleString('de-DE', {minimumFractionDigits:0, maximumFractionDigits:digits});
 }
 
+/** Zahl aus Eingabe: leer/null/undefined → null (nicht 0). Bewusst eingetragenes 0 bleibt 0. */
+function optionalNumber(v){
+  if(v === '' || v == null) return null;
+  if(typeof v === 'number') return Number.isFinite(v) ? v : null;
+  const s = String(v).trim().replace(',', '.');
+  if(!s) return null;
+  const n = Number(s);
+  return Number.isFinite(n) ? n : null;
+}
+
 function assembly(input, geo){
   const g = geo || geometry(input);
   const support = input.support === true || input.support === 'ja';
-  const crew = Number(input.crew);
-  const crewN = Number.isFinite(crew) && crew > 0 ? crew : 2;
-  const craneMem = Number(input.craneHours);
-  const craneMemN = Number.isFinite(craneMem) && craneMem >= 0 ? craneMem : 4;
-  const craneSup = Number(input.supportCraneHours);
-  const craneSupN = Number.isFinite(craneSup) && craneSup >= 0 ? craneSup : 2;
-  const nights = Number(input.hotelNights);
-  const nightsN = Number.isFinite(nights) && nights >= 0 ? nights : null;
-  const people = Number(input.hotelPeople);
-  const peopleN = Number.isFinite(people) && people > 0 ? people : crewN;
-  const days = Number(input.installDays);
-  const daysN = Number.isFinite(days) && days > 0 ? days : null;
+  const crew = optionalNumber(input.crew);
+  const crewN = crew != null && crew >= 0 ? crew : null;
+  const craneMem = optionalNumber(input.craneHours);
+  const craneMemN = craneMem != null && craneMem >= 0 ? craneMem : null;
+  const craneSup = optionalNumber(input.supportCraneHours);
+  const craneSupN = craneSup != null && craneSup >= 0 ? craneSup : null;
+  const nights = optionalNumber(input.hotelNights);
+  const nightsN = nights != null && nights >= 0 ? nights : null;
+  const people = optionalNumber(input.hotelPeople);
+  const peopleN = people != null && people >= 0 ? people : null;
+  const days = optionalNumber(input.installDays);
+  const daysN = days != null && days >= 0 ? days : null;
+
+  const qtyStatus = (val) => val != null ? STATUS.vorl : STATUS.fehlt;
+  const qtyComplete = (val) => val != null ? 'mengenregel-vorlaeufig' : 'mengenregel-offen';
 
   const items = [];
   items.push(pos('crew','Monteure', crewN, 'Personen',
-    'Grundannahme 2 Monteure (änderbar). Vorläufig, keine verbindliche Personaleinsatzplanung.',
-    STATUS.vorl, {group:'montage'}));
+    'Planwert 2 Monteure (nur Hinweis im Eingabefeld, nicht automatisch übernommen). Vorläufig, keine verbindliche Personaleinsatzplanung.' + (crewN != null ? '' : ' Menge offen, solange das Feld leer ist.'),
+    qtyStatus(crewN), {group:'montage', completeness: qtyComplete(crewN)}));
   items.push(pos('days','Montagetage (Planwert)', daysN, 'Tage',
     'Erfahrungswerte: kleinere Dächer ungefähr 2–3 Tage, größere ungefähr 4–5 Tage. Konkrete Zuordnung zur Behältergröße und verbindliche Kalkulation sind noch offen. Kein automatisches Schätzen aus dem Durchmesser.',
-    daysN != null ? STATUS.vorl : STATUS.fehlt, {group:'montage', completeness: daysN != null ? 'mengenregel-vorlaeufig' : 'mengenregel-offen'}));
+    qtyStatus(daysN), {group:'montage', completeness: qtyComplete(daysN)}));
   items.push(pos('crane-mem','Membranhub mit Kran', craneMemN, 'h',
-    'Planansatz ca. 4 Stunden, grundsätzlich unabhängig von der Dachgröße. Vorläufig. Krangröße hängt von Abmessungen, Last, Hubhöhe, Ausladung und Standortbedingungen ab (noch festzulegen).',
-    STATUS.vorl, {group:'montage'}));
+    'Planansatz ca. 4 Stunden (nur Hinweis im Eingabefeld, nicht automatisch übernommen), grundsätzlich unabhängig von der Dachgröße. Vorläufig. Krangröße hängt von Abmessungen, Last, Hubhöhe, Ausladung und Standortbedingungen ab (noch festzulegen).' + (craneMemN != null ? '' : ' Menge offen, solange das Feld leer ist.'),
+    qtyStatus(craneMemN), {group:'montage', completeness: qtyComplete(craneMemN)}));
   items.push(pos('crane-sup','Mittelstützenhub mit Kran', support ? craneSupN : 0, 'h',
     support
-      ? 'Separater Hub, ca. 2 Stunden als vorläufiger Ansatz (Montagezeiten später genauer festlegen).'
+      ? (craneSupN != null
+          ? 'Separater Hub, ' + formulaNum(craneSupN) + ' h (Planansatz ca. 2 Stunden nur als Hinweis). Vorläufig.'
+          : 'Separater Hub, Planansatz ca. 2 Stunden (nur Hinweis im Eingabefeld, nicht automatisch übernommen). Menge offen.')
       : 'Kein Mittelstützenhub, da keine Mittelstütze im Lieferumfang.',
-    support ? STATUS.vorl : STATUS.fest, {group:'montage'}));
-  const craneSum = craneMemN + (support ? craneSupN : 0);
+    support ? qtyStatus(craneSupN) : STATUS.fest,
+    {group:'montage', completeness: support ? qtyComplete(craneSupN) : 'mengenregel-vorhanden'}));
+  const craneSum = !support
+    ? craneMemN
+    : (craneMemN != null && craneSupN != null ? craneMemN + craneSupN : null);
   items.push(pos('crane-sum','Kranstunden gesamt (Planansatz)', craneSum, 'h',
-    formulaNum(craneMemN) + ' h Membran' + (support ? ' + ' + formulaNum(craneSupN) + ' h Mittelstütze' : '') + ' = ' + formulaNum(craneSum) + ' h. Vorläufig, keine verbindliche Hebeplanung.',
-    STATUS.vorl, {group:'montage'}));
+    craneSum != null
+      ? formulaNum(craneMemN) + ' h Membran' + (support ? ' + ' + formulaNum(craneSupN) + ' h Mittelstütze' : '') + ' = ' + formulaNum(craneSum) + ' h. Vorläufig, keine verbindliche Hebeplanung.'
+      : 'Summe offen, solange Membranhub' + (support ? ' oder Mittelstützenhub' : '') + ' nicht angegeben ist. Planwerte werden nicht automatisch eingesetzt.',
+    qtyStatus(craneSum), {group:'montage', completeness: qtyComplete(craneSum)}));
   items.push(pos('scaffold','Umlaufendes Gerüst', 1, 'bauseits',
     'Umlaufendes Gerüst bauseits. Arbeiten überwiegend von der Behälteroberkante aus. Keine Preisposition.',
     STATUS.vorl, {group:'montage'}));
@@ -667,16 +821,7 @@ function assembly(input, geo){
   items.push(pos('unload','Entladung', null, 'Position',
     'Eigene Position; Detailkalkulation später. Kein Verkaufspreis in dieser Phase.',
     STATUS.fehlt, {group:'montage', completeness:'mengenregel-offen'}));
-  items.push(pos('hotel-rate','Hotelpauschale (Satz)', HOTEL_RATE, 'EUR/Monteur/Nacht',
-    'Übernachtung 100 EUR je Monteur und Nacht pauschal. Einziger festgelegter Preisansatz in dieser Phase.',
-    STATUS.fest, {group:'montage'}));
-  const hotelTotal = (nightsN != null && peopleN != null) ? nightsN * peopleN * HOTEL_RATE : null;
-  items.push(pos('hotel-total','Hotelkosten (Pauschale)', hotelTotal, 'EUR',
-    nightsN != null
-      ? formulaNum(nightsN,0) + ' Nächte × ' + formulaNum(peopleN,0) + ' Personen × 100 EUR = ' + formulaNum(hotelTotal,0) + ' EUR. Nächte hängen von der noch offenen Montagezeit ab.'
-      : 'Nächte noch offen (Montagezeit nicht verbindlich zugeordnet). Satz 100 EUR/Monteur/Nacht bleibt festgelegt.',
-    hotelTotal != null ? STATUS.vorl : STATUS.fehlt, {group:'montage'}));
-  return {items, crewN, craneMemN, craneSupN: support ? craneSupN : 0, nightsN, peopleN, daysN, hotelTotal, support};
+  return {items, crewN, craneMemN, craneSupN: support ? craneSupN : 0, nightsN, peopleN, daysN, support};
 }
 
 function analyzeTank(input){
@@ -728,14 +873,14 @@ function openReport(input, analysis){
   fest.push('Mauerkronenstreifen 57 cm breit, nur Beton, beide Profilvarianten.');
   fest.push('5 % Reserve nur auf Kleinteile (Abspanngummis, Einschlagnieten, Anker, Schrauben); nicht pauschal auf alle Komponenten.');
   fest.push('Mittelstützenhöhe = Wandhöhe + 5 % des Innendurchmessers (Beispiel 20 m / 6 m → 7 m).');
-  fest.push('Hotelpauschale 100 EUR je Monteur und Nacht.');
+  fest.push('Übernachtungen (Monteur-Nächte) als Angebotsposition; der Satz wird nur über die Preisliste gepflegt, leer = offen.');
   fest.push('Hersteller-Volumentabelle: ' + VOLUME_SOURCE + '. Zusätzlich ' + VOLUME_PDF + '. Ganze Innendurchmesser 10–40 m, sechs Dachformen. Keine Interpolation. Freibordvolumen wird nicht automatisch mit dem Tabellen-Nutzvolumen verrechnet.');
   fest.push('D 40 m, Kugelkappe 1/2 D, Vol. nutzbar = 13 780 m³ laut Hersteller-PDF (normaler Tabellenwert).');
 
   vorl.push('Nietabstand Mauerkronenstreifen ca. 20 cm; Klemmleisten ca. 1 m; Ösen Außenmembran ca. 1 m; Gurtwandhalter-Bohrungen ca. 90 cm.');
   vorl.push('Länge Mauerkronenstreifen als geometrischer Ansatz π(D + w) ohne bestätigten Überlappungszuschlag.');
   vorl.push('Abspanngummis: vorläufig ein Gummi je Öse, plus 5 % Reserve.');
-  vorl.push('Membranhub ca. 4 h, Mittelstützenhub ca. 2 h; 2 Monteure; Montagezeiten 2–3 bzw. 4–5 Tage noch nicht verbindlich zugeordnet.');
+  vorl.push('Planansätze (nur Hinweis, nicht automatisch als Menge übernommen): Membranhub ca. 4 h, Mittelstützenhub ca. 2 h, 2 Monteure. Montagezeiten 2–3 bzw. 4–5 Tage noch nicht verbindlich zugeordnet. Leere Felder bleiben Menge offen.');
   vorl.push('Geometrische Kugelkappen-/Kegelvolumina und -flächen nur als geometrischer Richtwert, nicht als Herstellerwert oder Bestellmenge.');
   if(g.profile === 'Deckprofil' && g.mountSource === 'vorläufig'){
     vorl.push('Stahl-Montageumfang nicht angegeben, vorläufig mittlerer Umfang π(D + w) verwendet.');
@@ -790,28 +935,423 @@ function openReport(input, analysis){
   };
 }
 
-if(typeof module !== 'undefined' && module.exports){
-  module.exports = {
-    PI, HOLE_SPACING, RIVET_SPACING, CLAMP_LENGTH, EYELET_SPACING, BELT_HOLE_SPACING,
-    STRIP_WIDTH, RESERVE, HOTEL_RATE, ROOF_FORMS, TANK_TYPES, MATERIALS, STATUS,
-    VOLUME_SOURCE, VOLUME_PDF, VOLUME_TABLE,
-    ceilQty, withReserve, sphericalCap, coneGeometry, geometry, lookupTable,
-    geometricRoof, supportHeight, freeboardCylinder, billOfMaterials, assembly,
-    analyzeTank, aggregateItems, openReport, formulaNum
+
+const OFFER_TRADES = [
+  { id: 'membranen', label: 'Membranen' },
+  { id: 'profile', label: 'Profile und Schienen' },
+  { id: 'kleinteile', label: 'Kleinteile' },
+  { id: 'technik', label: 'Gebläse und Sicherheitstechnik' },
+  { id: 'montage', label: 'Montage' },
+  { id: 'kran', label: 'Übernachtung und Kran' }
+];
+
+const ITEM_TRADE_MAP = {
+  'inner-mem': 'membranen',
+  'outer-mem': 'membranen',
+  'mem-area-ref': 'membranen',
+  'eyelets': 'membranen',
+  'belts': 'membranen',
+  'c': 'profile',
+  'lower': 'profile',
+  'upper': 'profile',
+  'holes-lower': 'profile',
+  'holes-upper': 'profile',
+  'deck': 'profile',
+  'holes-deck': 'profile',
+  'joint': 'profile',
+  'profile-missing': 'profile',
+  'strip': 'profile',
+  'clamps': 'profile',
+  'belt-holes': 'profile',
+  'holders': 'profile',
+  'pole': 'profile',
+  'base': 'profile',
+  'screws-flat': 'kleinteile',
+  'screws-deck': 'kleinteile',
+  'rivets': 'kleinteile',
+  'rubber': 'kleinteile',
+  'anchors': 'kleinteile',
+  'sealant': 'kleinteile',
+  'blower': 'technik',
+  'vent': 'technik',
+  'relief': 'technik',
+  'sensor': 'technik',
+  'flange': 'technik',
+  'hose': 'technik',
+  'fittings': 'technik',
+  'crew': 'montage',
+  'days': 'montage',
+  'scaffold': 'montage',
+  'transport': 'montage',
+  'unload': 'montage',
+  'hotel-nights': 'kran',
+  'crane-mem': 'kran',
+  'crane-sup': 'kran'
+};
+
+function roundCents(n){
+  if(!Number.isFinite(n)) return null;
+  return Math.round((n + (n >= 0 ? 1e-12 : -1e-12)) * 100) / 100;
+}
+
+function parsePrice(v){
+  if(v === '' || v == null) return null;
+  if(typeof v === 'number') return Number.isFinite(v) && v >= 0 ? roundCents(v) : null;
+  const s = String(v).trim().replace(/\s+/g, '').replace(',', '.');
+  if(!s) return null;
+  const n = Number(s);
+  return Number.isFinite(n) && n >= 0 ? roundCents(n) : null;
+}
+
+function tankOfferPositions(tank, analysis){
+  const raw = [];
+  const items = (analysis && Array.isArray(analysis.items)) ? analysis.items : [];
+  const montItems = (analysis && analysis.mont && Array.isArray(analysis.mont.items)) ? analysis.mont.items : [];
+
+  items.forEach(it => {
+    if(it.id === 'pole-h') return;
+    let label = it.label;
+    if(it.id === 'pole' && it.qty === 1 && analysis.supportHeight != null){
+      label = it.label + ' (H = ' + formulaNum(analysis.supportHeight, 2) + ' m)';
+    }
+    raw.push({
+      id: it.id,
+      priceKey: it.id,
+      label,
+      qty: it.qty,
+      unit: it.unit,
+      status: it.status,
+      path: it.path,
+      tradeId: ITEM_TRADE_MAP[it.id] || 'technik',
+      notIncluded: it.qty === 0 && it.status === STATUS.fest,
+      byCustomer: it.unit === 'bauseits'
+    });
+  });
+
+  montItems.forEach(it => {
+    if(it.id === 'crane-sum') return;
+    raw.push({
+      id: it.id,
+      priceKey: it.id,
+      label: it.label,
+      qty: it.qty,
+      unit: it.unit,
+      status: it.status,
+      path: it.path,
+      tradeId: ITEM_TRADE_MAP[it.id] || 'montage',
+      notIncluded: it.qty === 0 && it.status === STATUS.fest,
+      byCustomer: it.unit === 'bauseits'
+    });
+  });
+
+  const mont = analysis && analysis.mont ? analysis.mont : null;
+  const hotelQty = (mont && mont.nightsN != null && mont.peopleN != null) ? (mont.nightsN * mont.peopleN) : null;
+  raw.push({
+    id: 'hotel-nights',
+    priceKey: 'hotel-nights',
+    label: 'Übernachtung (Monteur-Nächte)',
+    qty: hotelQty,
+    unit: 'Monteur-Nächte',
+    status: hotelQty != null ? STATUS.vorl : STATUS.fehlt,
+    path: hotelQty != null
+      ? formulaNum(mont.nightsN, 0) + ' Nächte × ' + formulaNum(mont.peopleN, 0) + ' Personen = ' + formulaNum(hotelQty, 0) + ' Monteur-Nächte (ohne vorab hinterlegten Preis).'
+      : 'Übernachtungen noch offen (Montagezeit nicht verbindlich zugeordnet).',
+    tradeId: 'kran',
+    notIncluded: false,
+    byCustomer: false
+  });
+
+  const ordered = [];
+  OFFER_TRADES.forEach(tr => {
+    raw.filter(r => r.tradeId === tr.id).forEach(r => ordered.push({ ...r, tradeLabel: tr.label }));
+  });
+  return ordered;
+}
+
+function buildOffer(tanks, analyses, priceMap, offerSettings, overridesByTank){
+  const list = Array.isArray(tanks) ? tanks : [];
+  const anList = Array.isArray(analyses) ? analyses : list.map(t => analyzeTank(t));
+  const prices = priceMap && typeof priceMap === 'object' ? priceMap : {};
+  const settings = offerSettings && typeof offerSettings === 'object' ? offerSettings : {};
+  const overrides = overridesByTank && typeof overridesByTank === 'object' ? overridesByTank : {};
+
+  const catalogMap = new Map();
+  const tankOffers = list.map((tank, idx) => {
+    const tankNo = idx + 1;
+    const analysis = anList[idx] || analyzeTank(tank);
+    const positions = tankOfferPositions(tank, analysis);
+    const tankOv = overrides[tank.id] && typeof overrides[tank.id] === 'object' ? overrides[tank.id] : {};
+
+    let pricedCount = 0;
+    let openQtyCount = 0;
+    let missingPriceCount = 0;
+    let subtotalAcc = 0;
+
+    const rows = positions.map((p, pIdx) => {
+      const posNo = tankNo + '.' + String(pIdx + 1).padStart(2, '0');
+      const tankLabel = (tank.name || tank.type || ('Behälter ' + tankNo));
+
+      if(!p.notIncluded){
+        if(!catalogMap.has(p.priceKey)){
+          catalogMap.set(p.priceKey, {
+            priceKey: p.priceKey,
+            label: p.id === 'pole' ? 'Mittelstütze, Edelstahl, einteilig' : p.label,
+            unit: p.unit,
+            tradeId: p.tradeId,
+            tradeLabel: p.tradeLabel,
+            tankNames: [tankLabel]
+          });
+        } else {
+          const c = catalogMap.get(p.priceKey);
+          if(!c.tankNames.includes(tankLabel)) c.tankNames.push(tankLabel);
+        }
+      }
+
+      const centralPrice = parsePrice(prices[p.priceKey]);
+      const overridePrice = parsePrice(tankOv[p.priceKey]);
+      const hasOverride = overridePrice != null;
+      const unitPrice = hasOverride ? overridePrice : centralPrice;
+
+      const isNotIncluded = !!p.notIncluded;
+      const isByCustomer = !isNotIncluded && !!p.byCustomer && unitPrice == null;
+      const isOpenQty = !isNotIncluded && (p.status === STATUS.fehlt || p.qty == null);
+      const isMissingPrice = !isNotIncluded && !isByCustomer && !isOpenQty && unitPrice == null;
+      const isOpen = isOpenQty || isMissingPrice;
+
+      let lineTotal = null;
+      if(!isNotIncluded && !isByCustomer && !isOpenQty && unitPrice != null && p.qty != null){
+        lineTotal = roundCents(p.qty * unitPrice);
+        subtotalAcc = roundCents(subtotalAcc + lineTotal);
+        pricedCount++;
+      }
+      if(isOpenQty) openQtyCount++;
+      if(isMissingPrice) missingPriceCount++;
+
+      return {
+        ...p,
+        posNo,
+        centralPrice,
+        overridePrice,
+        hasOverride,
+        unitPrice,
+        isNotIncluded,
+        isByCustomer,
+        isOpenQty,
+        isMissingPrice,
+        isOpen,
+        lineTotal
+      };
+    });
+
+    const openCount = openQtyCount + missingPriceCount;
+    return {
+      tank,
+      tankNo,
+      analysis,
+      rows,
+      pricedCount,
+      openQtyCount,
+      missingPriceCount,
+      openCount,
+      subtotal: pricedCount > 0 ? roundCents(subtotalAcc) : null
+    };
+  });
+
+  const pricedTanks = tankOffers.filter(to => to.subtotal != null);
+  const tanksSubtotal = pricedTanks.length > 0
+    ? roundCents(pricedTanks.reduce((s, to) => s + to.subtotal, 0))
+    : null;
+
+  const rawDiscount = parsePrice(settings.discountPct);
+  const discountPct = rawDiscount != null ? Math.min(100, Math.max(0, rawDiscount)) : 0;
+  const discountAmount = (tanksSubtotal != null && discountPct > 0)
+    ? roundCents(tanksSubtotal * discountPct / 100)
+    : 0;
+  const afterDiscount = tanksSubtotal != null ? roundCents(tanksSubtotal - discountAmount) : null;
+
+  const extraCosts = parsePrice(settings.extraCosts);
+  const hasAnyPrice = tanksSubtotal != null || (extraCosts != null && extraCosts > 0);
+  const netTotal = hasAnyPrice
+    ? roundCents((afterDiscount != null ? afterDiscount : 0) + (extraCosts != null ? extraCosts : 0))
+    : null;
+
+  const vatEnabled = settings.vatEnabled !== false;
+  const rawVat = parsePrice(settings.vatRate);
+  const vatRate = rawVat != null ? Math.min(100, Math.max(0, rawVat)) : 19;
+  const vatAmount = (netTotal != null && vatEnabled) ? roundCents(netTotal * vatRate / 100) : 0;
+  const grossTotal = netTotal != null ? roundCents(netTotal + vatAmount) : null;
+
+  const openQtyCount = tankOffers.reduce((s, to) => s + to.openQtyCount, 0);
+  const missingPriceCount = tankOffers.reduce((s, to) => s + to.missingPriceCount, 0);
+  const openCount = openQtyCount + missingPriceCount;
+
+  const catalog = [];
+  OFFER_TRADES.forEach(tr => {
+    for(const item of catalogMap.values()){
+      if(item.tradeId === tr.id) catalog.push(item);
+    }
+  });
+
+  return {
+    trades: OFFER_TRADES,
+    tankOffers,
+    catalog,
+    tanksSubtotal,
+    discountPct,
+    discountAmount,
+    afterDiscount,
+    extraCosts,
+    hasAnyPrice,
+    netTotal,
+    vatEnabled,
+    vatRate,
+    vatAmount,
+    grossTotal,
+    openQtyCount,
+    missingPriceCount,
+    openCount,
+    hasOpenPositions: openCount > 0
   };
 }
 
+
+function csvEscape(x){ return '"'+String(x ?? '').replaceAll('"','""')+'"'; }
+
+function csvNum(n, digits){
+  if(n == null || n === '') return '';
+  const v = typeof n === 'number' ? n : Number(String(n).trim().replace(/\s+/g, '').replace(',', '.'));
+  if(!Number.isFinite(v)) return '';
+  const d = digits != null ? digits : 2;
+  return v.toFixed(d).replace('.', ',');
+}
+
+function csvQty(qty, unit){
+  if(qty == null || qty === '') return '';
+  const v = typeof qty === 'number' ? qty : Number(String(qty).trim().replace(/\s+/g, '').replace(',', '.'));
+  if(!Number.isFinite(v)) return '';
+  if(unit === 'm' || unit === 'm²' || unit === 'm³') return csvNum(v, 3);
+  if(unit === 'Stk' || unit === 'Personen' || unit === 'Nächte' || unit === 'Monteur-Nächte' || unit === 'bauseits') return csvNum(v, 0);
+  if(unit === 'EUR' || unit === '€') return csvNum(v, 2);
+  return csvNum(v, Number.isInteger(v) ? 0 : 3);
+}
+
+function offerRowQty(r){
+  if(r.isNotIncluded) return '0';
+  if(r.isOpenQty) return 'Menge offen';
+  return csvQty(r.qty, r.unit);
+}
+
+function buildOfferCsv(offer, opts){
+  const o = opts && typeof opts === 'object' ? opts : {};
+  const m = o.meta && typeof o.meta === 'object' ? o.meta : {};
+  const mode = o.mode || 'einzelpreise';
+  const rows = [
+    ['Angebot', o.projectName || ''],
+    ['Kunde', m.customer || ''],
+    ['Standort', m.location || ''],
+    ['Angebotsnummer', m.offerNumber || ''],
+    ['Datum', m.offerDate || ''],
+    ['Gültigkeit', m.offerValidity || ''],
+    ['Bearbeiter', m.author || ''],
+    ['Anzeigemodus', mode],
+    ['Hinweis', 'Schematische Mengenermittlung, Montagewerte vorläufig'],
+    []
+  ];
+
+  if(mode === 'projektsumme'){
+    rows.push(['Nr.', 'Behälter', 'Positionen', 'Offene Positionen', 'Zwischensumme netto (EUR)']);
+    offer.tankOffers.forEach(to => {
+      rows.push([to.tankNo, to.tank.name || to.tank.type, to.rows.length, to.openCount, to.subtotal != null ? csvNum(to.subtotal, 2) : 'nach Aufwand / offen']);
+    });
+  } else if(mode === 'behaeltersumme'){
+    rows.push(['Behälter', 'Pos.-Nr.', 'Gewerk', 'Bezeichnung', 'Menge', 'Einheit', 'Hinweis / Status']);
+    offer.tankOffers.forEach(to => {
+      to.rows.forEach(r => {
+        const hint = r.isNotIncluded ? 'nicht im Lieferumfang' : (r.isByCustomer ? 'bauseits' : (r.isOpenQty ? 'nach Aufwand / offen' : (r.isMissingPrice ? 'auf Anfrage (Preis offen)' : r.status)));
+        rows.push([to.tank.name || to.tank.type, r.posNo, r.tradeLabel, r.label, offerRowQty(r), r.unit, hint]);
+      });
+      rows.push([to.tank.name || to.tank.type, '', '', 'Zwischensumme Behälter (netto)', '', 'EUR', to.subtotal != null ? csvNum(to.subtotal, 2) : 'nach Aufwand / offen']);
+    });
+  } else {
+    rows.push(['Behälter', 'Pos.-Nr.', 'Gewerk', 'Bezeichnung', 'Menge', 'Einheit', 'Einzelpreis (EUR)', 'Gesamtpreis (EUR)', 'Hinweis / Status']);
+    offer.tankOffers.forEach(to => {
+      to.rows.forEach(r => {
+        const epStr = r.isNotIncluded ? '' : (r.isByCustomer ? 'bauseits' : (r.unitPrice != null ? csvNum(r.unitPrice, 2) : 'auf Anfrage'));
+        const gpStr = r.isNotIncluded ? 'nicht enthalten' : (r.isByCustomer ? 'bauseits' : (r.lineTotal != null ? csvNum(r.lineTotal, 2) : 'nach Aufwand / offen'));
+        rows.push([to.tank.name || to.tank.type, r.posNo, r.tradeLabel, r.label, offerRowQty(r), r.unit, epStr, gpStr, r.status]);
+      });
+      rows.push([to.tank.name || to.tank.type, '', '', 'Zwischensumme Behälter (netto)', '', 'EUR', '', to.subtotal != null ? csvNum(to.subtotal, 2) : 'nach Aufwand / offen', to.openCount ? 'Summe ohne offene Positionen' : '']);
+    });
+  }
+
+  rows.push([]);
+  rows.push(['Projektsummen']);
+  rows.push(['Summe Behälter (netto)', offer.tanksSubtotal != null ? csvNum(offer.tanksSubtotal, 2) : 'nach Aufwand / offen', offer.hasOpenPositions ? 'Summe ohne offene Positionen' : '']);
+  if(offer.discountPct > 0){
+    rows.push(['Rabatt (' + csvNum(offer.discountPct, 1) + ' %)', offer.tanksSubtotal != null ? csvNum(offer.discountAmount, 2) : 'offen']);
+    rows.push(['Zwischensumme nach Rabatt', offer.afterDiscount != null ? csvNum(offer.afterDiscount, 2) : 'offen']);
+  }
+  if(offer.extraCosts != null && offer.extraCosts > 0) rows.push(['Nebenkosten / Frachtpauschale', csvNum(offer.extraCosts, 2)]);
+  rows.push(['Gesamtsumme netto', offer.netTotal != null ? csvNum(offer.netTotal, 2) : 'nach Aufwand / offen']);
+  if(offer.vatEnabled){
+    rows.push(['MwSt. (' + csvNum(offer.vatRate, 1) + ' %)', offer.netTotal != null ? csvNum(offer.vatAmount, 2) : 'offen']);
+    rows.push(['Gesamtsumme brutto', offer.grossTotal != null ? csvNum(offer.grossTotal, 2) : 'nach Aufwand / offen']);
+  } else {
+    rows.push(['Angebotssumme (Netto-Angebot, ohne MwSt.)', offer.netTotal != null ? csvNum(offer.netTotal, 2) : 'nach Aufwand / offen']);
+  }
+  if(m.terms && String(m.terms).trim()) rows.push([], ['Bedingungen / Hinweise', String(m.terms).trim()]);
+
+  return '\uFEFF' + rows.map(row => row.map(csvEscape).join(';')).join('\r\n');
+}
+
+
+const OPTIONAL_QTY_KEYS = ['crew','installDays','craneHours','supportCraneHours','hotelNights','hotelPeople'];
+
+/** Leere/fehlende optionale Mengenfelder bleiben null (kein Planwert-Fallback). Bewusstes 0 bleibt 0. */
+function applyLoadedOptionalQty(target, raw){
+  const src = raw && typeof raw === 'object' ? raw : {};
+  const out = target && typeof target === 'object' ? target : {};
+  OPTIONAL_QTY_KEYS.forEach(k => {
+    if(!Object.prototype.hasOwnProperty.call(src, k) || src[k] === '' || src[k] === null || src[k] === undefined){
+      out[k] = null;
+    } else {
+      out[k] = optionalNumber(src[k]);
+    }
+  });
+  return out;
+}
+
+if(typeof module !== 'undefined' && module.exports){
+  module.exports = {
+    PI, HOLE_SPACING, RIVET_SPACING, CLAMP_LENGTH, EYELET_SPACING, BELT_HOLE_SPACING,
+    STRIP_WIDTH, RESERVE, ROOF_FORMS, TANK_TYPES, MATERIALS, STATUS,
+    VOLUME_SOURCE, VOLUME_PDF, VOLUME_TABLE,
+    ceilQty, withReserve, sphericalCap, coneGeometry, geometry, lookupTable,
+    geometricRoof, supportHeight, freeboardCylinder, billOfMaterials, assembly,
+    analyzeTank, aggregateItems, openReport, formulaNum, optionalNumber, OPTIONAL_QTY_KEYS, applyLoadedOptionalQty,
+    OFFER_TRADES, ITEM_TRADE_MAP, roundCents, parsePrice, tankOfferPositions, buildOffer,
+    csvEscape, csvNum, csvQty, buildOfferCsv
+  };
+}
 'use strict';
 
 const STORAGE_KEY = 'gasspeicher-konfigurator-v1';
+const STORAGE_PRICE_KEY = 'gasspeicher-preisliste-v1';
 const $ = id => document.getElementById(id);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt = (n, d=2) => Number.isFinite(n) ? n.toLocaleString('de-DE',{minimumFractionDigits:d, maximumFractionDigits:d}) : '–';
+const fmtEur = n => Number.isFinite(n) ? fmt(n, 2) + ' €' : 'nach Aufwand / offen';
 const fmtQty = (n, unit) => {
-  if(n == null || !Number.isFinite(n)) return 'offen';
-  const d = (unit === 'Stk' || unit === 'Personen' || unit === 'Nächte' || unit === 'bauseits') ? 0 : (Math.abs(n) >= 100 ? 1 : 3);
+  if(n == null || !Number.isFinite(n)) return 'Menge offen';
+  const d = (unit === 'Stk' || unit === 'Personen' || unit === 'Nächte' || unit === 'Monteur-Nächte' || unit === 'bauseits') ? 0 : (Math.abs(n) >= 100 ? 1 : 3);
   return fmt(n, d);
 };
+function todayDE(){
+  const d = new Date();
+  const dd = String(d.getDate()).padStart(2,'0');
+  const mm = String(d.getMonth()+1).padStart(2,'0');
+  return dd + '.' + mm + '.' + d.getFullYear();
+}
 const statusClass = s => s === STATUS.fest ? 'status-fest' : s === STATUS.vorl ? 'status-vorl' : 'status-fehlt';
 const statusBadge = s => '<span class="status '+statusClass(s)+'">'+esc(s)+'</span>';
 const numOrEmpty = el => {
@@ -839,22 +1379,47 @@ function defaultTank(partial){
     freeboard: null,
     support: 'ja',
     innerHeight: null,
-    crew: 2,
+    crew: null,
     installDays: null,
-    craneHours: 4,
-    supportCraneHours: 2,
+    craneHours: null,
+    supportCraneHours: null,
     hotelNights: null,
-    hotelPeople: 2,
+    hotelPeople: null,
     craneClass: '',
     delivery: '',
     notes: ''
   }, partial || {});
 }
 
+function defaultOfferMeta(){
+  return {
+    customer: '',
+    location: '',
+    offerNumber: '',
+    offerDate: todayDE(),
+    offerValidity: '',
+    author: '',
+    terms: ''
+  };
+}
+
+function defaultOfferSettings(){
+  return {
+    mode: 'einzelpreise',
+    discountPct: null,
+    extraCosts: null,
+    vatEnabled: true,
+    vatRate: 19,
+    priceOverrides: {}
+  };
+}
+
 function freshProject(){
   return {
-    version: 1,
+    version: 2,
     name: 'Gasspeicher – Beispielprojekt',
+    meta: defaultOfferMeta(),
+    offer: defaultOfferSettings(),
     tanks: [
       defaultTank({id: uid(), name:'Fermenter 20 × 6 m', type:'Fermenter', diameter:20, wallHeight:6, thickness:0.30, roofId:'kk12', support:'ja'}),
       defaultTank({id: uid(), name:'Gärrestlager 32 × 8 m', type:'Gärrestlager', diameter:32, wallHeight:8, thickness:0.30, roofId:'kk12', support:'nein'})
@@ -863,11 +1428,19 @@ function freshProject(){
   };
 }
 
+function freshPriceList(){
+  return { version: 1, prices: {}, updatedAt: null };
+}
+
 let project = freshProject();
+let priceList = freshPriceList();
+let activeOverrides = new Set();
 let selectedId = project.tanks[0].id;
 let viewId = selectedId;
 let filling = false;
 let cut = true;
+let showStraps = true;
+let showNet = true;
 let lastDimensions = '';
 
 function selectedTank(){ return project.tanks.find(t => t.id === selectedId) || project.tanks[0]; }
@@ -939,12 +1512,12 @@ function writeForm(t){
   $('roofId').value = t.roofId || '';
   $('support').value = t.support || '';
   $('innerHeight').value = t.innerHeight != null ? t.innerHeight : '';
-  $('crew').value = t.crew != null ? t.crew : 2;
+  $('crew').value = t.crew != null ? t.crew : '';
   $('installDays').value = t.installDays != null ? t.installDays : '';
-  $('craneHours').value = t.craneHours != null ? t.craneHours : 4;
-  $('supportCraneHours').value = t.supportCraneHours != null ? t.supportCraneHours : 2;
+  $('craneHours').value = t.craneHours != null ? t.craneHours : '';
+  $('supportCraneHours').value = t.supportCraneHours != null ? t.supportCraneHours : '';
   $('hotelNights').value = t.hotelNights != null ? t.hotelNights : '';
-  $('hotelPeople').value = t.hotelPeople != null ? t.hotelPeople : 2;
+  $('hotelPeople').value = t.hotelPeople != null ? t.hotelPeople : '';
   $('craneClass').value = t.craneClass || '';
   $('delivery').value = t.delivery || '';
   $('notes').value = t.notes || '';
@@ -998,6 +1571,10 @@ function renderInfo(t, a){
   }
   if(t.support === 'ja' && a.supportHeight != null){
     rows.push(['Mittelstütze', fmt(a.supportHeight)+' m']);
+    const strapN = g.Ui != null ? ceilQty(g.Ui / BELT_HOLE_SPACING) : null;
+    if(strapN != null) rows.push(['Gurte (~90 cm)', strapN + ' Stk']);
+  } else {
+    rows.push(['Gurte / Netz', 'nur bei Mittelstütze']);
   }
   $('tankInfo').innerHTML = rows.map(([k,v]) => '<b>'+esc(k)+'</b><span>'+esc(v)+'</span>').join('');
 }
@@ -1235,7 +1812,7 @@ function renderMontage(){
     });
   });
   $('montageTable').innerHTML = '<table><thead><tr><th>Behälter</th><th>Position</th><th class="num">Menge</th><th>Einheit</th><th class="wrap">Rechenweg</th><th>Status</th></tr></thead><tbody>'+rows.join('')+'</tbody></table>';
-  $('montageNote').textContent = 'Erfahrungswerte 2–3 Tage (kleinere Dächer) bzw. 4–5 Tage (größere) sind nicht automatisch zugeordnet. Krangröße, gemeinsame Einsätze und Verkaufspreise bleiben offen. Hotelpauschale 100 EUR/Monteur/Nacht ist der einzige festgelegte Preisansatz.';
+  $('montageNote').textContent = 'Erfahrungswerte 2–3 Tage (kleinere Dächer) bzw. 4–5 Tage (größere) sind nicht automatisch zugeordnet. Krangröße, gemeinsame Einsätze und Verkaufspreise bleiben offen. Übernachtungen (Monteur-Nächte) werden im Angebot ausgewiesen; der Satz wird nur über die Preisliste gepflegt, leer = offen.';
 }
 
 function renderVolumeTable(current){
@@ -1316,7 +1893,7 @@ function renderOpen(t, a){
 
 /* ---------- 3-D (same camera/orbit pattern as Behälterverkleidungs-Rechner) ---------- */
 let scene, camera, renderer, model, animationId, canvas;
-let orbit = {theta:0.85, phi:1.24, radius:11}, pointerState = new Map(), pinchDistance = 0;
+let orbit = {theta:0.10, phi:1.40, radius:5.2, targetY:0.45}, pointerState = new Map(), pinchDistance = 0;
 
 function cylinder(radius, height, material, y=0, segments=64){
   const mesh = new THREE.Mesh(new THREE.CylinderGeometry(radius, radius, height, segments), material);
@@ -1394,17 +1971,16 @@ function buildModel(t, a){
   });
 
   const phiStart = cut ? Math.PI*0.18 : 0, phiLen = cut ? Math.PI*1.64 : Math.PI*2;
-  const wall = new THREE.Mesh(new THREE.CylinderGeometry(outerR, outerR, H, 64, 1, false, phiStart, phiLen), wallMat);
+  const spherePhiStart = cut ? Math.PI*0.68 : 0; // SphereGeometry phi=PI/2 aligns with CylinderGeometry theta=0 (+Z)
+  const wall = new THREE.Mesh(new THREE.CylinderGeometry(outerR, outerR, H, 64, 1, true, phiStart, phiLen), wallMat);
   model.add(wall);
-  // inner face for cutaway
+  const floorRing = new THREE.Mesh(new THREE.CircleGeometry(outerR, 64, cut ? Math.PI*1.5 + phiStart : 0, phiLen), wallMat);
+  floorRing.rotation.x = -Math.PI/2; floorRing.position.y = -H/2; model.add(floorRing);
   if(cut){
     const innerWall = new THREE.Mesh(new THREE.CylinderGeometry(innerR, innerR, H, 64, 1, true, phiStart, phiLen), wallMat);
     model.add(innerWall);
-    // radial cut faces
-    const thick = Math.max(0.012, outerR-innerR);
-    // skip extra faces; cut cylinder is readable enough
   }
-  const crown = new THREE.Mesh(new THREE.RingGeometry(innerR, outerR, 64), wallMat);
+  const crown = new THREE.Mesh(new THREE.RingGeometry(innerR, outerR, 64, 1, cut ? Math.PI*1.5 + phiStart : 0, phiLen), wallMat);
   crown.rotation.x = -Math.PI/2; crown.position.y = H/2; model.add(crown);
 
   const addCap = (hWorld, color, opacity) => {
@@ -1419,7 +1995,7 @@ function buildModel(t, a){
     } else {
       const R = (a*a + h*h) / (2*h);
       const alpha = Math.acos(Math.max(-1, Math.min(1, (R-h)/R)));
-      const dome = new THREE.Mesh(new THREE.SphereGeometry(R, 48, 24, phiStart, phiLen, 0, Math.max(1e-3, alpha)), mat);
+      const dome = new THREE.Mesh(new THREE.SphereGeometry(R, 48, 24, spherePhiStart, phiLen, 0, Math.max(1e-3, alpha)), mat);
       dome.position.y = H/2 + h - R;
       model.add(dome);
     }
@@ -1428,13 +2004,99 @@ function buildModel(t, a){
     addCap(roofH, 0x9fd6ef, 0.35);
     if(innerH > 0) addCap(innerH, 0x4ec9a8, 0.5);
     const rimPts = [];
-    for(let i=0;i<=64;i++){ const ang=i/64*Math.PI*2; rimPts.push(new THREE.Vector3(innerR*Math.cos(ang), H/2, innerR*Math.sin(ang))); }
+    const r0 = cut ? phiStart : 0, rLen = cut ? phiLen : Math.PI*2;
+    for(let i=0;i<=64;i++){ const ang=r0 + (i/64)*rLen; rimPts.push(new THREE.Vector3(innerR*Math.sin(ang), H/2, innerR*Math.cos(ang))); }
     model.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(rimPts), new THREE.LineBasicMaterial({color:0xb8e0f2, transparent:true, opacity:0.85})));
   }
-  if(t.support === 'ja' && a.supportHeight != null){
+
+  const hasSupport = t.support === 'ja' && a.supportHeight != null;
+  sync3DToggles(hasSupport);
+  if(hasSupport){
+    const poleR = Math.max(0.045, 0.26*scale); // sichtbar dicker (~0,55 m bei D 20)
     const hs = a.supportHeight * scale;
-    const pole = cylinder(Math.max(0.025, 0.12*scale), hs, new THREE.MeshStandardMaterial({color:0xc5d0d6, metalness:0.8, roughness:0.25}), -H/2 + hs/2, 16);
+    const yPoleTop = -H/2 + hs;
+    const poleMat = new THREE.MeshStandardMaterial({color:0x2f3944, metalness:0.55, roughness:0.32});
+    const pole = cylinder(poleR, hs, poleMat, -H/2 + hs/2, 16);
     model.add(pole);
+
+    // Kronenring fest ca. 1,5 m Durchmesser (nicht proportional zu D)
+    const rRing = 0.75 * scale;
+    const yRing = yPoleTop - Math.max(0.015, 0.06 * scale);
+    const ringMat = new THREE.MeshStandardMaterial({color:0xd8e2e8, metalness:0.7, roughness:0.28});
+    const crownRing = new THREE.Mesh(new THREE.TorusGeometry(rRing, Math.max(0.014, 0.045*scale), 12, 40), ringMat);
+    crownRing.rotation.x = Math.PI/2;
+    crownRing.position.y = yRing;
+    model.add(crownRing);
+
+    const strapCount = g.Ui != null ? (ceilQty(g.Ui / BELT_HOLE_SPACING) || 0) : 0;
+    const rWall = innerR * 0.992;
+    const yWall = H/2 - Math.max(0.015, 0.04 * scale);
+    const sag = Math.max(0.01, Math.max(0, yRing - yWall) * 0.16);
+    const strapPoint = (s, ang) => {
+      const r = rWall + (rRing - rWall) * s;
+      const yCone = yWall + (yRing - yWall) * s;
+      const y = yCone - sag * 4 * s * (1 - s);
+      return [r * Math.sin(ang), y, r * Math.cos(ang)];
+    };
+    const isAngleVisible = ang => !cut || (ang >= phiStart && ang <= phiStart + phiLen);
+
+    if(showStraps && strapCount > 0){
+      const strapVerts = [];
+      const steps = 12;
+      for(let k=0; k<strapCount; k++){
+        const ang = (k / strapCount) * Math.PI * 2;
+        if(!isAngleVisible(ang)) continue;
+        for(let j=0; j<steps; j++){
+          const p0 = strapPoint(j/steps, ang);
+          const p1 = strapPoint((j+1)/steps, ang);
+          strapVerts.push(p0[0],p0[1],p0[2], p1[0],p1[1],p1[2]);
+        }
+        // Umlenkung am Kronenring zur Stützenspitze
+        const pRing = strapPoint(1, ang);
+        const rTip = poleR * 0.7;
+        strapVerts.push(pRing[0],pRing[1],pRing[2], rTip*Math.sin(ang), yPoleTop, rTip*Math.cos(ang));
+      }
+      if(strapVerts.length){
+        const sg = new THREE.BufferGeometry();
+        sg.setAttribute('position', new THREE.Float32BufferAttribute(strapVerts, 3));
+        model.add(new THREE.LineSegments(sg, new THREE.LineBasicMaterial({color:0xe1aa57, transparent:true, opacity:0.92})));
+      }
+    }
+
+    if(showNet && strapCount > 0){
+      const netVerts = [];
+      const ringFracs = [0.16, 0.32, 0.48, 0.64, 0.80];
+      const arcSteps = Math.max(strapCount, 64);
+      const a0 = cut ? phiStart : 0;
+      const aSpan = cut ? phiLen : Math.PI * 2;
+      ringFracs.forEach(s => {
+        for(let i=0; i<arcSteps; i++){
+          const ang0 = a0 + (i/arcSteps)*aSpan;
+          const ang1 = a0 + ((i+1)/arcSteps)*aSpan;
+          const p0 = strapPoint(s, ang0);
+          const p1 = strapPoint(s, ang1);
+          netVerts.push(p0[0],p0[1],p0[2], p1[0],p1[1],p1[2]);
+        }
+      });
+      // Diagonale Netzmaschen zwischen benachbarten Gurten
+      for(let k=0; k<strapCount; k++){
+        const ang0 = (k / strapCount) * Math.PI * 2;
+        const ang1 = ((k + 1) / strapCount) * Math.PI * 2;
+        if(cut && (!isAngleVisible(ang0) || !isAngleVisible(ang1))) continue;
+        for(let r=0; r<ringFracs.length-1; r++){
+          const sA = ringFracs[r], sB = ringFracs[r+1];
+          const pA0 = strapPoint(sA, ang0), pB1 = strapPoint(sB, ang1);
+          const pA1 = strapPoint(sA, ang1), pB0 = strapPoint(sB, ang0);
+          netVerts.push(pA0[0],pA0[1],pA0[2], pB1[0],pB1[1],pB1[2]);
+          netVerts.push(pA1[0],pA1[1],pA1[2], pB0[0],pB0[1],pB0[2]);
+        }
+      }
+      if(netVerts.length){
+        const ng = new THREE.BufferGeometry();
+        ng.setAttribute('position', new THREE.Float32BufferAttribute(netVerts, 3));
+        model.add(new THREE.LineSegments(ng, new THREE.LineBasicMaterial({color:0xd8e8f0, transparent:true, opacity:0.62})));
+      }
+    }
   }
   if(cut && a.fbVal != null && a.fbVal < g.H){
     const fillH = Math.max(0, g.H - a.fbVal) * scale;
@@ -1451,29 +2113,332 @@ function buildModel(t, a){
   scene.add(grid); model.userData.grid = grid;
   model.position.y = 0.14;
   const newDims = [g.Di, g.H, roofH, t.roofId, t.material, t.support].join(':');
-  const spanH = H + roofH * scale;
-  if(newDims !== lastDimensions){ orbit.radius = Math.max(5.8, spanH*1.7 + 3); lastDimensions = newDims; }
+  if(newDims !== lastDimensions){ orbit = defaultOrbit(t, a); lastDimensions = newDims; }
   resize(); view();
+}
+
+function defaultOrbit(t, a){
+  const g = a && a.geo;
+  if(!g || !g.ok) return {theta:0.08, phi:1.42, radius:4.8, targetY:0.42};
+  const roofH = a.table && a.table.available ? a.table.height : (a.geoRoofNominal ? a.geoRoofNominal.h : 0);
+  const sc = 3 / Math.max(g.Da||g.Di||1, (g.H||1) + (roofH||0), 1);
+  const span = ((g.H||0) + (roofH||0)) * sc;
+  // Flacher, näherer Blick in die Schnittöffnung (um +Z), Vorbild 20x6-schnittansicht-nah
+  const targetY = Math.max(0.38, (g.H||0) * sc * 0.55);
+  return {
+    theta: 0.10,
+    phi: 1.40,
+    radius: Math.max(5.1, span * 1.15 + 2.3),
+    targetY
+  };
 }
 
 function getPinch(){ const p=[...pointerState.values()]; return p.length===2 ? Math.hypot(p[0].x-p[1].x, p[0].y-p[1].y) : 0; }
 function resize(){ if(!renderer) return; const width=canvas.clientWidth, height=canvas.clientHeight; if(!width||!height) return; renderer.setSize(width,height,false); camera.aspect=width/height; camera.updateProjectionMatrix(); view(); }
-function view(){ if(!renderer) return; const x=orbit.radius*Math.sin(orbit.phi)*Math.sin(orbit.theta), y=orbit.radius*Math.cos(orbit.phi), z=orbit.radius*Math.sin(orbit.phi)*Math.cos(orbit.theta); camera.position.set(x,y,z); camera.lookAt(0,0.20,0); renderer.render(scene,camera); }
+function view(){ if(!renderer) return; const x=orbit.radius*Math.sin(orbit.phi)*Math.sin(orbit.theta), y=orbit.radius*Math.cos(orbit.phi), z=orbit.radius*Math.sin(orbit.phi)*Math.cos(orbit.theta); camera.position.set(x,y,z); camera.lookAt(0, orbit.targetY != null ? orbit.targetY : 0.42, 0); renderer.render(scene,camera); }
 function scheduleView(){ if(animationId) return; animationId=requestAnimationFrame(()=>{ animationId=0; view(); }); }
 function resetOrbit(t, a){
-  const g = a.geo;
-  if(!g.ok){ orbit={theta:0.85,phi:1.24,radius:11}; view(); return; }
-  const roofH = a.table.available ? a.table.height : (a.geoRoofNominal ? a.geoRoofNominal.h : 0);
-  const sc = 3 / Math.max(g.Da||g.Di||1, (g.H||1) + (roofH||0), 1);
-  const span = ((g.H||0) + (roofH||0)) * sc;
-  orbit = {theta:0.85, phi:1.24, radius: Math.max(5.8, span*1.7+3)};
+  orbit = defaultOrbit(t, a);
   view();
+}
+
+function sync3DToggles(hasSupport){
+  const bs = $('toggleStraps'), bn = $('toggleNet');
+  if(!bs || !bn) return;
+  bs.textContent = hasSupport ? (showStraps ? 'Gurte: An' : 'Gurte: Aus') : 'Gurte: nur Stütze';
+  bs.classList.toggle('active', hasSupport && showStraps);
+  bs.disabled = !hasSupport;
+  bn.textContent = hasSupport ? (showNet ? 'Netz: An' : 'Netz: Aus') : 'Netz: nur Stütze';
+  bn.classList.toggle('active', hasSupport && showNet);
+  bn.disabled = !hasSupport;
 }
 
 function persist(){
   try { localStorage.setItem(STORAGE_KEY, JSON.stringify(project)); } catch(e){ /* private mode */ }
 }
+function persistPriceList(){
+  priceList.updatedAt = new Date().toISOString();
+  try { localStorage.setItem(STORAGE_PRICE_KEY, JSON.stringify(priceList)); } catch(e){ /* private mode */ }
+}
 function setStatus(msg){ $('status').textContent = msg; }
+function setOfferStatus(msg){ if($('offerStatus')) $('offerStatus').textContent = msg; }
+
+function currentOffer(){
+  const analyses = project.tanks.map(analyze);
+  return buildOffer(project.tanks, analyses, priceList.prices, project.offer, project.offer.priceOverrides);
+}
+
+function writeOfferControls(){
+  filling = true;
+  const m = project.meta || defaultOfferMeta();
+  const o = project.offer || defaultOfferSettings();
+  $('offerCustomer').value = m.customer || '';
+  $('offerLocation').value = m.location || '';
+  $('offerNumber').value = m.offerNumber || '';
+  $('offerDate').value = m.offerDate || '';
+  $('offerValidity').value = m.offerValidity || '';
+  $('offerAuthor').value = m.author || '';
+  $('offerTerms').value = m.terms || '';
+  $('offerDiscount').value = o.discountPct != null ? o.discountPct : '';
+  $('offerExtra').value = o.extraCosts != null ? o.extraCosts : '';
+  $('offerVatRate').value = o.vatRate != null ? o.vatRate : 19;
+  $('offerVatEnabled').checked = o.vatEnabled !== false;
+  document.querySelectorAll('[data-offer-mode]').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-offer-mode') === (o.mode || 'einzelpreise'));
+  });
+  filling = false;
+}
+
+function readOfferControls(){
+  if(!project.meta) project.meta = defaultOfferMeta();
+  if(!project.offer) project.offer = defaultOfferSettings();
+  project.meta.customer = $('offerCustomer').value.trim();
+  project.meta.location = $('offerLocation').value.trim();
+  project.meta.offerNumber = $('offerNumber').value.trim();
+  project.meta.offerDate = $('offerDate').value.trim();
+  project.meta.offerValidity = $('offerValidity').value.trim();
+  project.meta.author = $('offerAuthor').value.trim();
+  project.meta.terms = $('offerTerms').value;
+  const disc = numOrEmpty($('offerDiscount'));
+  project.offer.discountPct = disc != null ? Math.min(100, Math.max(0, disc)) : null;
+  const ext = numOrEmpty($('offerExtra'));
+  project.offer.extraCosts = ext != null && ext >= 0 ? ext : null;
+  const vr = numOrEmpty($('offerVatRate'));
+  project.offer.vatRate = vr != null && vr >= 0 ? Math.min(100, vr) : 19;
+  project.offer.vatEnabled = $('offerVatEnabled').checked;
+}
+
+function updatePriceBadges(offer){
+  const count = Object.keys(priceList.prices || {}).filter(k => parsePrice(priceList.prices[k]) != null).length;
+  const totalCat = (offer && offer.catalog) ? offer.catalog.length : 0;
+  if($('priceCountBadge')) $('priceCountBadge').textContent = count + ' von ' + totalCat + ' gepflegt';
+  setOfferStatus('Preisliste lokal aktiv: ' + count + ' Artikelpreise gepflegt (nur in diesem Browser / JSON-Datei).');
+}
+
+function renderPriceList(offer){
+  if(!$('priceListWrap')) return;
+  updatePriceBadges(offer);
+  if(!offer.catalog.length){
+    $('priceListWrap').innerHTML = '<p class="hint" style="padding:10px">Keine Positionen vorhanden.</p>';
+    return;
+  }
+  let body = '';
+  let lastTrade = '';
+  offer.catalog.forEach(c => {
+    if(c.tradeLabel !== lastTrade){
+      lastTrade = c.tradeLabel;
+      body += '<tr class="trade-row"><td colspan="4">' + esc(c.tradeLabel) + '</td></tr>';
+    }
+    const val = parsePrice(priceList.prices[c.priceKey]);
+    body += '<tr>' +
+      '<td>' + esc(c.label) + '</td>' +
+      '<td>' + esc(c.unit) + '</td>' +
+      '<td class="num"><input type="number" min="0" step="0.01" inputmode="decimal" class="price-input" data-central-key="' + esc(c.priceKey) + '" value="' + (val != null ? esc(val) : '') + '" placeholder="leer = offen"></td>' +
+      '<td class="wrap small muted-cell">' + esc(c.tankNames.join(', ')) + '</td>' +
+      '</tr>';
+  });
+  $('priceListWrap').innerHTML = '<table><thead><tr><th>Artikel / Position</th><th>Einheit</th><th class="num">Einzelpreis (€)</th><th class="wrap">Verwendung im Projekt</th></tr></thead><tbody>' + body + '</tbody></table>';
+}
+
+function renderOfferTotalsHtml(offer){
+  const sumNote = offer.hasOpenPositions ? ' <span class="small muted-cell">(Summe ohne offene Positionen)</span>' : '';
+  const rows = [];
+  rows.push('<tr><td>Summe Behälter (netto)' + sumNote + '</td><td class="num">' + esc(offer.tanksSubtotal != null ? fmtEur(offer.tanksSubtotal) : 'nach Aufwand / offen') + '</td></tr>');
+  if(offer.discountPct > 0){
+    rows.push('<tr><td>abzgl. Rabatt (' + esc(fmt(offer.discountPct, 1)) + ' %)</td><td class="num">' + (offer.tanksSubtotal != null ? '− ' + esc(fmtEur(offer.discountAmount)) : 'offen') + '</td></tr>');
+  }
+  if(offer.extraCosts != null && offer.extraCosts > 0){
+    rows.push('<tr><td>zzgl. Nebenkosten / Frachtpauschale</td><td class="num">+ ' + esc(fmtEur(offer.extraCosts)) + '</td></tr>');
+  }
+  rows.push('<tr class="total-net"><td>Gesamtsumme netto</td><td class="num">' + esc(offer.netTotal != null ? fmtEur(offer.netTotal) : 'nach Aufwand / offen') + '</td></tr>');
+  if(offer.vatEnabled){
+    rows.push('<tr><td>zzgl. MwSt. (' + esc(fmt(offer.vatRate, 1)) + ' %)</td><td class="num">' + esc(offer.netTotal != null ? fmtEur(offer.vatAmount) : 'offen') + '</td></tr>');
+    rows.push('<tr class="total-main"><td>Gesamtsumme brutto</td><td class="num">' + esc(offer.grossTotal != null ? fmtEur(offer.grossTotal) : 'nach Aufwand / offen') + '</td></tr>');
+  } else {
+    rows.push('<tr class="total-main"><td>Angebotssumme (Netto-Angebot, ohne MwSt.)</td><td class="num">' + esc(offer.netTotal != null ? fmtEur(offer.netTotal) : 'nach Aufwand / offen') + '</td></tr>');
+  }
+  return '<div class="offer-totals" id="offerTotalsBox"><table><tbody>' + rows.join('') + '</tbody></table></div>';
+}
+
+function renderOfferBannerHtml(offer){
+  if(offer.hasOpenPositions){
+    return '<div class="flag" id="offerOpenBanner"><strong>Hinweis:</strong> Schematische Mengenermittlung, Montagewerte vorläufig. <strong>Summe ohne offene Positionen</strong> (' +
+      offer.openCount + ' Positionen mit offener Menge bzw. ohne gepflegten Preis sind als „nach Aufwand / offen“ ausgewiesen).</div>';
+  }
+  return '<div class="note" id="offerOpenBanner">Schematische Mengenermittlung, Montagewerte vorläufig. Alle berechneten Positionen sind bepreist.</div>';
+}
+
+function renderOfferDocument(offer){
+  const el = $('offerDocument');
+  if(!el) return;
+  const m = project.meta || defaultOfferMeta();
+  const mode = (project.offer && project.offer.mode) || 'einzelpreise';
+  const modeLabel = mode === 'einzelpreise' ? 'Einzelpreise je Position' : (mode === 'behaeltersumme' ? 'Gesamtpreis je Behälter' : 'Nur Projektsumme');
+
+  const metaRows = [
+    ['Projekt', project.name || '–'],
+    ['Kunde', m.customer || '–'],
+    ['Standort', m.location || '–'],
+    ['Angebots-Nr.', m.offerNumber || '–'],
+    ['Datum', m.offerDate || '–'],
+    ['Gültigkeit', m.offerValidity || '–'],
+    ['Bearbeiter', m.author || '–'],
+    ['Ansicht', modeLabel]
+  ];
+
+  let html = '<div class="offer-doc-header">' +
+    '<div class="offer-doc-brand"><div class="eyebrow">Angebot · Doppelmembrangasspeicher</div><h3>' + esc(project.name || 'Gasspeicher-Projekt') + '</h3><div class="sub">' + offer.tankOffers.length + ' Behälter · ' + esc(modeLabel) + '</div></div>' +
+    '<div class="offer-doc-meta">' + metaRows.map(([k,v]) => '<b>' + esc(k) + '</b><span>' + esc(v) + '</span>').join('') + '</div>' +
+    '</div>';
+
+  html += renderOfferBannerHtml(offer);
+
+  if(mode === 'projektsumme'){
+    const sumRows = offer.tankOffers.map(to => {
+      const t = to.tank;
+      const g = to.analysis.geo;
+      const form = ROOF_FORMS.find(f => f.id === t.roofId);
+      const spec = [t.type, t.material, g.profile, g.Di != null ? 'Ø ' + fmt(g.Di, 2) + ' m' : 'Ø offen', g.H != null ? 'H ' + fmt(g.H, 2) + ' m' : 'H offen', form ? form.short : ''].filter(Boolean).join(' · ');
+      const subStr = to.subtotal != null
+        ? fmtEur(to.subtotal) + (to.openCount > 0 ? ' (ohne offene Pos.)' : '')
+        : 'nach Aufwand / offen';
+      return '<tr>' +
+        '<td><strong>' + to.tankNo + '</strong></td>' +
+        '<td><strong>' + esc(t.name || t.type) + '</strong> <button type="button" class="ov-btn edit-tank-btn" data-edit-tank="' + esc(t.id) + '">Bearbeiten</button></td>' +
+        '<td class="wrap small">' + esc(spec) + '</td>' +
+        '<td class="num">' + to.rows.length + (to.openCount ? ' (' + to.openCount + ' offen)' : '') + '</td>' +
+        '<td class="num"><strong>' + esc(subStr) + '</strong></td>' +
+        '</tr>';
+    }).join('');
+    html += '<div class="table-scroll"><table><thead><tr><th>Nr.</th><th>Behälter</th><th class="wrap">Auslegung</th><th class="num">Positionen</th><th class="num">Zwischensumme (netto)</th></tr></thead><tbody>' + sumRows + '</tbody></table></div>';
+  } else {
+    offer.tankOffers.forEach(to => {
+      const t = to.tank;
+      const g = to.analysis.geo;
+      const form = ROOF_FORMS.find(f => f.id === t.roofId);
+      const spec = [t.type, t.material, g.profile, g.Di != null ? 'Innen-Ø ' + fmt(g.Di, 2) + ' m' : 'Ø offen', g.H != null ? 'H ' + fmt(g.H, 2) + ' m' : 'H offen', form ? form.name : ''].filter(Boolean).join(' · ');
+      const colSpan = mode === 'einzelpreise' ? 7 : 5;
+      let tbody = '';
+      let lastTrade = '';
+      to.rows.forEach(r => {
+        if(r.tradeLabel !== lastTrade){
+          lastTrade = r.tradeLabel;
+          tbody += '<tr class="trade-row"><td colspan="' + colSpan + '">Gewerk: ' + esc(r.tradeLabel) + '</td></tr>';
+        }
+        const qtyText = r.isNotIncluded ? '0' : (r.isOpenQty ? 'Menge offen' : fmtQty(r.qty, r.unit));
+        let statusText = r.status;
+        if(r.isNotIncluded) statusText = 'nicht im Lieferumfang';
+        else if(r.isByCustomer) statusText = 'bauseits';
+        else if(r.isOpenQty) statusText = 'Menge offen · nach Aufwand / offen';
+        else if(r.isMissingPrice) statusText = 'auf Anfrage (Preis offen)';
+
+        if(mode === 'einzelpreise'){
+          const ovKey = t.id + '::' + r.priceKey;
+          const isOv = r.hasOverride || activeOverrides.has(ovKey);
+          let epCell = '';
+          if(r.isNotIncluded){
+            epCell = '<span class="muted-cell">—</span>';
+          } else if(r.isByCustomer){
+            epCell = '<span class="muted-cell">bauseits</span>';
+          } else {
+            epCell = '<span class="screen-only price-cell-wrap">' +
+              '<input type="number" min="0" step="0.01" inputmode="decimal" class="price-input' + (isOv ? ' is-override' : '') + '" data-tank-id="' + esc(t.id) + '" data-price-key="' + esc(r.priceKey) + '" value="' + (r.unitPrice != null ? esc(r.unitPrice) : '') + '" placeholder="auf Anfrage">' +
+              '<button type="button" class="ov-btn' + (isOv ? ' active' : '') + '" data-ov-tank="' + esc(t.id) + '" data-ov-key="' + esc(r.priceKey) + '" title="' + (isOv ? 'Individuellen Behälterpreis aufheben (zentralen Preis nutzen)' : 'Nur für diesen Behälter individuell überschreiben') + '">Indiv.</button>' +
+              '</span>' +
+              '<span class="print-only" data-print-ep="' + esc(ovKey) + '">' + esc(r.unitPrice != null ? fmtEur(r.unitPrice) : 'auf Anfrage') + '</span>';
+          }
+          const gpText = r.isNotIncluded ? 'nicht enthalten' : (r.isByCustomer ? 'bauseits' : (r.lineTotal != null ? fmtEur(r.lineTotal) : 'nach Aufwand / offen'));
+          tbody += '<tr>' +
+            '<td>' + esc(r.posNo) + '</td>' +
+            '<td class="wrap">' + esc(r.label) + '</td>' +
+            '<td class="num">' + esc(qtyText) + '</td>' +
+            '<td>' + esc(r.unit) + '</td>' +
+            '<td class="num">' + epCell + '</td>' +
+            '<td class="num" data-line-total="' + esc(ovKey) + '">' + esc(gpText) + '</td>' +
+            '<td class="wrap small" data-line-status="' + esc(ovKey) + '">' + esc(statusText) + '</td>' +
+            '</tr>';
+        } else {
+          const hintB = r.isNotIncluded ? 'nicht im Lieferumfang' : (r.isByCustomer ? 'bauseits' : (r.isOpenQty ? 'nach Aufwand / offen' : (r.isMissingPrice ? 'auf Anfrage (Preis offen)' : r.status)));
+          tbody += '<tr>' +
+            '<td>' + esc(r.posNo) + '</td>' +
+            '<td class="wrap">' + esc(r.label) + '</td>' +
+            '<td class="num">' + esc(qtyText) + '</td>' +
+            '<td>' + esc(r.unit) + '</td>' +
+            '<td class="wrap small">' + esc(hintB) + '</td>' +
+            '</tr>';
+        }
+      });
+
+      const subText = to.subtotal != null
+        ? fmtEur(to.subtotal) + (to.openCount > 0 ? ' (Summe ohne offene Positionen)' : '')
+        : 'nach Aufwand / offen';
+      const headCols = mode === 'einzelpreise'
+        ? '<tr><th>Pos.</th><th class="wrap">Bezeichnung</th><th class="num">Menge</th><th>Einheit</th><th class="num">Einzelpreis</th><th class="num">Gesamtpreis</th><th class="wrap">Hinweis / Status</th></tr>'
+        : '<tr><th>Pos.</th><th class="wrap">Bezeichnung</th><th class="num">Menge</th><th>Einheit</th><th class="wrap">Hinweis / Status</th></tr>';
+
+      html += '<div class="offer-tank-block">' +
+        '<div class="offer-tank-head"><div><h3>Behälter ' + to.tankNo + ': ' + esc(t.name || t.type) + '</h3><div class="offer-tank-sub">' + esc(spec) + '</div></div>' +
+        '<button type="button" class="edit-tank-btn" data-edit-tank="' + esc(t.id) + '">Im Konfigurator bearbeiten</button></div>' +
+        '<div class="table-scroll"><table><thead>' + headCols + '</thead><tbody>' + tbody + '</tbody></table></div>' +
+        '<div class="offer-tank-foot" data-tank-foot="' + esc(t.id) + '"><span>Zwischensumme Behälter ' + to.tankNo + ' (netto)</span><strong>' + esc(subText) + '</strong></div>' +
+        '</div>';
+    });
+  }
+
+  html += renderOfferTotalsHtml(offer);
+  if(m.terms && m.terms.trim()){
+    html += '<div class="offer-terms-box"><strong>Bedingungen / Hinweise</strong><p>' + esc(m.terms.trim()) + '</p></div>';
+  }
+  html += '<div class="offer-disclaimer">Hinweis: Schematische Mengenermittlung, Montagewerte vorläufig. Keine verbindliche Planungs-, Preis- oder Herstellerauskunft.</div>';
+
+  el.innerHTML = html;
+}
+
+function renderOffer(){
+  const offer = currentOffer();
+  renderPriceList(offer);
+  renderOfferDocument(offer);
+}
+
+function refreshOfferAfterInlinePriceEdit(editedTankId, editedKey){
+  const offer = currentOffer();
+  // Update all rows (in case central price affects multiple tanks) without destroying focused input
+  offer.tankOffers.forEach(to => {
+    to.rows.forEach(r => {
+      const ovKey = to.tank.id + '::' + r.priceKey;
+      const gpEl = document.querySelector('[data-line-total="' + CSS.escape(ovKey) + '"]');
+      if(gpEl){
+        gpEl.textContent = r.isNotIncluded ? 'nicht enthalten' : (r.isByCustomer ? 'bauseits' : (r.lineTotal != null ? fmtEur(r.lineTotal) : 'nach Aufwand / offen'));
+      }
+      const stEl = document.querySelector('[data-line-status="' + CSS.escape(ovKey) + '"]');
+      if(stEl){
+        let statusText = r.status;
+        if(r.isNotIncluded) statusText = 'nicht im Lieferumfang';
+        else if(r.isByCustomer) statusText = 'bauseits';
+        else if(r.isOpenQty) statusText = 'Menge offen · nach Aufwand / offen';
+        else if(r.isMissingPrice) statusText = 'auf Anfrage (Preis offen)';
+        stEl.textContent = statusText;
+      }
+      const prEl = document.querySelector('[data-print-ep="' + CSS.escape(ovKey) + '"]');
+      if(prEl) prEl.textContent = r.unitPrice != null ? fmtEur(r.unitPrice) : 'auf Anfrage';
+      const inp = document.querySelector('.price-input[data-tank-id="' + CSS.escape(to.tank.id) + '"][data-price-key="' + CSS.escape(r.priceKey) + '"]');
+      if(inp && !(to.tank.id === editedTankId && r.priceKey === editedKey) && document.activeElement !== inp){
+        inp.value = r.unitPrice != null ? String(r.unitPrice) : '';
+      }
+    });
+    const footEl = document.querySelector('[data-tank-foot="' + CSS.escape(to.tank.id) + '"] strong');
+    if(footEl){
+      footEl.textContent = to.subtotal != null
+        ? fmtEur(to.subtotal) + (to.openCount > 0 ? ' (Summe ohne offene Positionen)' : '')
+        : 'nach Aufwand / offen';
+    }
+  });
+  const totalsBox = $('offerTotalsBox');
+  if(totalsBox) totalsBox.outerHTML = renderOfferTotalsHtml(offer);
+  const banner = $('offerOpenBanner');
+  if(banner) banner.outerHTML = renderOfferBannerHtml(offer);
+  renderPriceList(offer);
+}
 
 function renderAll(){
   if(!project.tanks.length){ project.tanks.push(defaultTank()); selectedId = project.tanks[0].id; viewId = selectedId; }
@@ -1488,6 +2453,7 @@ function renderAll(){
   renderSketch(t, a);
   renderBoms(t, a);
   renderMontage();
+  renderOffer();
   renderVolumeTable(a);
   renderOpen(t, a);
   const vt = viewTank();
@@ -1515,11 +2481,37 @@ function downloadFile(name, content, mime){
 function exportJSON(){
   project.savedAt = new Date().toISOString();
   project.name = $('projectName').value;
-  downloadFile((project.name || 'gasspeicher-projekt').replace(/[^\w\-]+/g,'_') + '.json', JSON.stringify(project, null, 2), 'application/json');
-  setStatus('Projektdatei gespeichert.');
+  const payload = Object.assign({}, project, { version: 2, pricesSnapshot: Object.assign({}, priceList.prices) });
+  downloadFile((project.name || 'gasspeicher-projekt').replace(/[^\w\-]+/g,'_') + '.json', JSON.stringify(payload, null, 2), 'application/json');
+  setStatus('Projektdatei (inkl. Angebotsdaten & Preisstand) gespeichert.');
 }
 
-function csvEscape(x){ return '"'+String(x ?? '').replaceAll('"','""')+'"'; }
+function exportPriceListJSON(){
+  priceList.updatedAt = new Date().toISOString();
+  const base = (project.name || 'gasspeicher').replace(/[^\w\-]+/g,'_');
+  downloadFile(base + '_preisliste.json', JSON.stringify({
+    version: 1,
+    type: 'gasspeicher-preisliste',
+    updatedAt: priceList.updatedAt,
+    prices: priceList.prices
+  }, null, 2), 'application/json');
+  setOfferStatus('Preisliste als JSON gespeichert.');
+}
+
+function importPriceListObject(data){
+  if(!data || typeof data !== 'object') throw new Error('Datei enthält keine Preisliste.');
+  const rawMap = (data.prices && typeof data.prices === 'object') ? data.prices
+    : (data.pricesSnapshot && typeof data.pricesSnapshot === 'object' ? data.pricesSnapshot : data);
+  const cleaned = {};
+  Object.keys(rawMap).forEach(k => {
+    if(['version','type','updatedAt','name','tanks','meta','offer','savedAt'].includes(k)) return;
+    const val = parsePrice(rawMap[k]);
+    if(val != null) cleaned[k] = val;
+  });
+  priceList = { version: 1, prices: cleaned, updatedAt: new Date().toISOString() };
+  persistPriceList();
+  renderOffer();
+}
 
 function exportCSV(){
   const rows = [['Projekt', project.name], ['Quelle Volumentabelle', VOLUME_SOURCE], []];
@@ -1544,16 +2536,31 @@ function exportCSV(){
   setStatus('CSV exportiert (UTF-8 mit BOM, Trennzeichen Semikolon).');
 }
 
+function exportOfferCSV(){
+  const offer = currentOffer();
+  const csv = buildOfferCsv(offer, {
+    projectName: project.name,
+    meta: project.meta || defaultOfferMeta(),
+    mode: (project.offer && project.offer.mode) || 'einzelpreise'
+  });
+  downloadFile((project.name || 'gasspeicher').replace(/[^\w\-]+/g,'_') + '_angebot.csv', csv, 'text/csv;charset=utf-8');
+  setOfferStatus('Angebots-CSV exportiert (UTF-8 mit BOM, Trennzeichen Semikolon).');
+}
+
 function loadProjectObject(data){
   if(!data || typeof data !== 'object') throw new Error('Datei enthält kein Projekt.');
-  if(data.version !== 1 && data.version !== 2) throw new Error('Unbekanntes Projektformat.');
-  const name = typeof data.name === 'string' ? data.name : '';
-  let tanks = Array.isArray(data.tanks) ? data.tanks : [];
+  // Unterstützung für alte Einzelbehälter-JSONs sowie v1 und v2 Projekte
+  const isLegacySingle = data.version == null && !Array.isArray(data.tanks) && (data.diameter != null || data.wallHeight != null);
+  if(!isLegacySingle && data.version !== 1 && data.version !== 2 && !Array.isArray(data.tanks)){
+    throw new Error('Unbekanntes Projektformat.');
+  }
+  const name = typeof data.name === 'string' ? data.name : (isLegacySingle ? 'Importierter Behälter' : '');
+  let tanks = isLegacySingle ? [data] : (Array.isArray(data.tanks) ? data.tanks : []);
   tanks = tanks.map(raw => {
     const t = defaultTank({});
     Object.keys(t).forEach(k => { if(raw[k] !== undefined && raw[k] !== null) t[k] = raw[k]; });
+    applyLoadedOptionalQty(t, raw);
     if(typeof raw.id === 'string') t.id = raw.id;
-    // Kompatibilität: erweiterte Version speicherte Wandstärke in cm als Zeichenkette
     if(typeof raw.thickness === 'string'){
       const n = Number(String(raw.thickness).replace(',', '.'));
       if(Number.isFinite(n)) t.thickness = n > 2 ? n/100 : n;
@@ -1572,7 +2579,47 @@ function loadProjectObject(data){
     return t;
   });
   if(!tanks.length) tanks = freshProject().tanks;
-  project = {version:1, name, tanks, savedAt: data.savedAt || null};
+
+  const meta = Object.assign(defaultOfferMeta(), data.meta && typeof data.meta === 'object' ? data.meta : {});
+  const rawOffer = data.offer && typeof data.offer === 'object' ? data.offer : {};
+  const offer = Object.assign(defaultOfferSettings(), {
+    mode: ['einzelpreise','behaeltersumme','projektsumme'].includes(rawOffer.mode) ? rawOffer.mode : 'einzelpreise',
+    discountPct: parsePrice(rawOffer.discountPct),
+    extraCosts: parsePrice(rawOffer.extraCosts),
+    vatEnabled: rawOffer.vatEnabled !== false,
+    vatRate: parsePrice(rawOffer.vatRate) != null ? parsePrice(rawOffer.vatRate) : 19,
+    priceOverrides: {}
+  });
+  activeOverrides = new Set();
+  if(rawOffer.priceOverrides && typeof rawOffer.priceOverrides === 'object'){
+    Object.keys(rawOffer.priceOverrides).forEach(tid => {
+      const m = rawOffer.priceOverrides[tid];
+      if(!m || typeof m !== 'object') return;
+      const cleanMap = {};
+      Object.keys(m).forEach(pk => {
+        const val = parsePrice(m[pk]);
+        if(val != null){
+          cleanMap[pk] = val;
+          activeOverrides.add(tid + '::' + pk);
+        }
+      });
+      if(Object.keys(cleanMap).length) offer.priceOverrides[tid] = cleanMap;
+    });
+  }
+
+  if(data.pricesSnapshot && typeof data.pricesSnapshot === 'object'){
+    const snap = {};
+    Object.keys(data.pricesSnapshot).forEach(k => {
+      const val = parsePrice(data.pricesSnapshot[k]);
+      if(val != null) snap[k] = val;
+    });
+    if(Object.keys(snap).length){
+      priceList = { version: 1, prices: snap, updatedAt: new Date().toISOString() };
+      persistPriceList();
+    }
+  }
+
+  project = {version: 2, name, meta, offer, tanks, savedAt: data.savedAt || null};
   selectedId = project.tanks[0].id;
   viewId = selectedId;
 }
@@ -1586,10 +2633,15 @@ function boot(){
   initSelects();
   canvas = $('scene');
   try {
+    const savedPrices = localStorage.getItem(STORAGE_PRICE_KEY);
+    if(savedPrices) importPriceListObject(JSON.parse(savedPrices));
+  } catch(e){ priceList = freshPriceList(); }
+  try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if(saved){ loadProjectObject(JSON.parse(saved)); setStatus('Letzter Projektstand aus diesem Gerät geladen.'); }
   } catch(e){ project = freshProject(); selectedId = project.tanks[0].id; viewId = selectedId; }
   writeForm(selectedTank());
+  writeOfferControls();
   renderAll();
   requestAnimationFrame(() => { resize(); if(viewTank()) { const t=viewTank(); if(analyze(t).geo.ok) buildModel(t, analyze(t)); } });
 
@@ -1599,6 +2651,130 @@ function boot(){
       el.addEventListener('input', onFormChange);
       el.addEventListener('change', () => { syncMaterialUI(); onFormChange(); });
     });
+
+  ['offerCustomer','offerLocation','offerNumber','offerDate','offerValidity','offerAuthor','offerDiscount','offerExtra','offerVatRate','offerVatEnabled','offerTerms']
+    .forEach(id => {
+      const el = $(id);
+      if(!el) return;
+      const handler = () => {
+        if(filling) return;
+        readOfferControls();
+        renderOffer();
+        persist();
+      };
+      el.addEventListener('input', handler);
+      el.addEventListener('change', handler);
+    });
+
+  document.querySelectorAll('[data-offer-mode]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      project.offer.mode = btn.getAttribute('data-offer-mode');
+      writeOfferControls();
+      renderOffer();
+      persist();
+    });
+  });
+
+  $('priceListWrap').addEventListener('input', e => {
+    const inp = e.target.closest('[data-central-key]');
+    if(!inp) return;
+    const key = inp.getAttribute('data-central-key');
+    const val = parsePrice(inp.value);
+    if(val == null) delete priceList.prices[key];
+    else priceList.prices[key] = val;
+    persistPriceList();
+    const offer = currentOffer();
+    updatePriceBadges(offer);
+    renderOfferDocument(offer);
+  });
+
+  $('offerDocument').addEventListener('input', e => {
+    const inp = e.target.closest('.price-input[data-tank-id][data-price-key]');
+    if(!inp) return;
+    const tid = inp.getAttribute('data-tank-id');
+    const key = inp.getAttribute('data-price-key');
+    const ovKey = tid + '::' + key;
+    const val = parsePrice(inp.value);
+    const hasOv = activeOverrides.has(ovKey) || (project.offer.priceOverrides[tid] && project.offer.priceOverrides[tid][key] != null);
+    if(hasOv){
+      if(!project.offer.priceOverrides[tid]) project.offer.priceOverrides[tid] = {};
+      if(val == null) delete project.offer.priceOverrides[tid][key];
+      else project.offer.priceOverrides[tid][key] = val;
+      persist();
+    } else {
+      if(val == null) delete priceList.prices[key];
+      else priceList.prices[key] = val;
+      persistPriceList();
+    }
+    refreshOfferAfterInlinePriceEdit(tid, key);
+  });
+
+  $('offerDocument').addEventListener('click', e => {
+    const ovBtn = e.target.closest('[data-ov-tank][data-ov-key]');
+    if(ovBtn){
+      const tid = ovBtn.getAttribute('data-ov-tank');
+      const key = ovBtn.getAttribute('data-ov-key');
+      const ovKey = tid + '::' + key;
+      const hadOv = activeOverrides.has(ovKey) || (project.offer.priceOverrides[tid] && project.offer.priceOverrides[tid][key] != null);
+      if(hadOv){
+        activeOverrides.delete(ovKey);
+        if(project.offer.priceOverrides[tid]){
+          delete project.offer.priceOverrides[tid][key];
+          if(!Object.keys(project.offer.priceOverrides[tid]).length) delete project.offer.priceOverrides[tid];
+        }
+      } else {
+        activeOverrides.add(ovKey);
+        const central = parsePrice(priceList.prices[key]);
+        if(central != null){
+          if(!project.offer.priceOverrides[tid]) project.offer.priceOverrides[tid] = {};
+          project.offer.priceOverrides[tid][key] = central;
+        }
+      }
+      persist();
+      renderOfferDocument(currentOffer());
+      return;
+    }
+    const editBtn = e.target.closest('[data-edit-tank]');
+    if(editBtn){
+      readFormInto(selectedTank());
+      selectedId = editBtn.getAttribute('data-edit-tank');
+      viewId = selectedId;
+      writeForm(selectedTank());
+      renderAll();
+      const target = $('scene-section');
+      if(target && target.scrollIntoView) target.scrollIntoView({behavior:'smooth'});
+    }
+  });
+
+  $('btnOfferPrint').addEventListener('click', () => {
+    document.body.classList.add('print-offer-only');
+    const cleanup = () => document.body.classList.remove('print-offer-only');
+    window.addEventListener('afterprint', cleanup, {once:true});
+    window.print();
+    setTimeout(cleanup, 1500);
+  });
+  $('btnOfferCsv').addEventListener('click', exportOfferCSV);
+  $('btnPriceSave').addEventListener('click', exportPriceListJSON);
+  $('btnPriceLoad').addEventListener('click', () => $('priceFileLoad').click());
+  $('priceFileLoad').addEventListener('change', async ev => {
+    const file = ev.target.files[0]; ev.target.value = '';
+    if(!file) return;
+    try {
+      const loaded = JSON.parse(await file.text());
+      importPriceListObject(loaded);
+      setOfferStatus('Preisliste aus „' + file.name + '“ geladen.');
+    } catch(err){ setOfferStatus('Preisliste konnte nicht geladen werden: ' + err.message); }
+  });
+  $('btnPriceClear').addEventListener('click', () => {
+    if(!confirm('Alle gepflegten Preise (zentrale Preisliste und Behälter-Überschreibungen) wirklich löschen?')) return;
+    priceList = freshPriceList();
+    project.offer.priceOverrides = {};
+    activeOverrides = new Set();
+    persistPriceList();
+    persist();
+    renderOffer();
+    setOfferStatus('Alle Preise gelöscht.');
+  });
 
   $('tankList').addEventListener('click', e => {
     const btn = e.target.closest('[data-tank]');
@@ -1642,14 +2818,22 @@ function boot(){
       const loaded = JSON.parse(await file.text());
       if((project.tanks.length || project.name) && !confirm('Aktuelles Projekt durch „'+(loaded.name||file.name)+'“ ersetzen?')) return;
       loadProjectObject(loaded);
-      writeForm(selectedTank()); renderAll(); setStatus('Projekt geladen.');
+      writeForm(selectedTank()); writeOfferControls(); renderAll(); setStatus('Projekt geladen.');
     } catch(err){ setStatus('Projekt konnte nicht geladen werden. '+err.message); }
   });
   $('btnCsv').addEventListener('click', exportCSV);
   $('btnPrint').addEventListener('click', () => window.print());
   $('cutaway').addEventListener('click', () => {
     cut = !cut;
-    $('cutaway').textContent = cut ? 'Schnittansicht' : 'Vollansicht';
+    $('cutaway').textContent = cut ? 'Vollansicht' : 'Schnittansicht';
+    const vt = viewTank(); buildModel(vt, analyze(vt));
+  });
+  $('toggleStraps').addEventListener('click', () => {
+    showStraps = !showStraps;
+    const vt = viewTank(); buildModel(vt, analyze(vt));
+  });
+  $('toggleNet').addEventListener('click', () => {
+    showNet = !showNet;
     const vt = viewTank(); buildModel(vt, analyze(vt));
   });
   $('resetView').addEventListener('click', () => { const vt = viewTank(); resetOrbit(vt, analyze(vt)); });
@@ -1657,7 +2841,6 @@ function boot(){
 
 if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);
 else boot();
-
 </script>
 </body>
 </html>
